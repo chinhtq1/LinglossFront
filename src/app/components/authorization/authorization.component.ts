@@ -25,5 +25,4 @@ export class AuthorizationComponent {
       this.isOkLoading = false;
     }, 3000);
   }
-
 }

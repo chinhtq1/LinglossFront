@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import {RouterModule} from '@angular/router';
 import { AppComponent } from './app.component';
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { ru_RU } from 'ng-zorro-antd/i18n';
@@ -29,6 +29,9 @@ import { LoginComponent } from './components/login/login.component';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { SearchComponent } from './components/search/search.component';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { PasswordResetComponent } from './components/password-reset/password-reset.component';
+import { DisciplineComponent } from './components/discipline/discipline.component';
+import { NavigationStackComponent } from './components/navigation-stack/navigation-stack.component';
 
 registerLocaleData(ru);
 
@@ -39,11 +42,15 @@ registerLocaleData(ru);
     HomeComponent,
     AuthorizationComponent,
     LoginComponent,
-    SearchComponent
+    SearchComponent,
+    PasswordResetComponent,
+    DisciplineComponent,
+    NavigationStackComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    RouterModule,
     HttpClientModule,
     BrowserAnimationsModule,
     NzFormModule,

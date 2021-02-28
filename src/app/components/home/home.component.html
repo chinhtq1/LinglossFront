@@ -18,12 +18,16 @@
       <ul nz-menu nzMode="inline" class="sider-menu">
         <li nz-submenu nzOpen nzTitle="My disciplines">
           <ul>
-            <li *ngFor="let discipline of disciplines" nz-menu-item>{{discipline.name}}</li>
+            <li *ngFor="let discipline of disciplines" nz-menu-item (click)="navigateToDiscipline(discipline)">
+              {{discipline.name}}
+            </li>
           </ul>
         </li>
         <li nz-submenu nzTitle="User settings">
           <ul>
-            <li nz-menu-item>Change password</li>
+            <li nz-menu-item>
+              <app-password-reset></app-password-reset>
+            </li>
           </ul>
         </li>
       </ul>
@@ -31,7 +35,7 @@
     <nz-layout class="inner-layout">
       <nz-content>
         <h1>Lingloss - ...........</h1>
-        <app-search></app-search>
+        <app-navigation-stack></app-navigation-stack>
       </nz-content>
     </nz-layout>
   </nz-layout>
