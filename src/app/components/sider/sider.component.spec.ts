@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NavigationStackComponent } from './navigation-stack.component';
+import { SiderComponent } from './sider.component';
 
-describe('NavigationStackComponent', () => {
-  let component: NavigationStackComponent;
-  let fixture: ComponentFixture<NavigationStackComponent>;
+describe('SiderComponent', () => {
+  let component: SiderComponent;
+  let fixture: ComponentFixture<SiderComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NavigationStackComponent ]
+      declarations: [ SiderComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NavigationStackComponent);
+    fixture = TestBed.createComponent(SiderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,11 +1,11 @@
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { HomeComponent } from './components/home/home.component';
 import { DisciplineComponent } from './components/discipline/discipline.component';
+import { MainComponent } from './components/main/main.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'start', pathMatch: 'full'},
-  {path: 'start', component: HomeComponent},
+  {path: 'start', component: MainComponent},
   {path: 'discipline/:name', component: DisciplineComponent}
 ];
 

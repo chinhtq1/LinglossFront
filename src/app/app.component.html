@@ -1,1 +1,18 @@
-<router-outlet></router-outlet>
+<nz-layout style="min-height: 100%">
+  <nz-header>
+    <app-header></app-header>
+  </nz-header>
+  <nz-layout>
+    <nz-sider nzWidth="250px" nzTheme="light">
+      <app-sider></app-sider>
+    </nz-sider>
+    <nz-layout class="inner-layout">
+      <nz-content>
+        <router-outlet></router-outlet>
+      </nz-content>
+    </nz-layout>
+  </nz-layout>
+  <nz-footer>
+    <app-footer></app-footer>
+  </nz-footer>
+</nz-layout>

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Discipline } from './models/discipline';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',

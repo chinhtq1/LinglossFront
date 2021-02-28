@@ -1,1 +1,15 @@
-<p>discipline works!</p>
+<nz-page-header class="site-page-header" nzTitle="{{discipline}}"></nz-page-header>
+<p nz-typography>{{text}}</p>
+<div class="card-container">
+  <nz-tabset>
+    <nz-tab [nzTitle]="'Search in bar'">
+      <app-search></app-search>
+    </nz-tab>
+    <nz-tab [nzTitle]="'Search alphabetically'">
+      <app-alphabetical-list></app-alphabetical-list>
+    </nz-tab>
+    <nz-tab [nzTitle]="'Explore network'">
+      <app-network></app-network>
+    </nz-tab>
+  </nz-tabset>
+</div>

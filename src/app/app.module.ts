@@ -13,7 +13,6 @@ import { NzFormModule } from 'ng-zorro-antd/form';
 import { AppRoutingModule } from './app-routing.module';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { NzInputModule } from 'ng-zorro-antd/input';
-import { HomeComponent } from './components/home/home.component';
 import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzButtonModule } from 'ng-zorro-antd/button';
@@ -31,7 +30,12 @@ import { SearchComponent } from './components/search/search.component';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { PasswordResetComponent } from './components/password-reset/password-reset.component';
 import { DisciplineComponent } from './components/discipline/discipline.component';
-import { NavigationStackComponent } from './components/navigation-stack/navigation-stack.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { HeaderComponent } from './components/header/header.component';
+import { SiderComponent } from './components/sider/sider.component';
+import { MainComponent } from './components/main/main.component';
+import { AlphabeticalListComponent } from './components/alphabetical-list/alphabetical-list.component';
+import { NetworkComponent } from './components/network/network.component';
 
 registerLocaleData(ru);
 
@@ -39,13 +43,17 @@ registerLocaleData(ru);
   declarations: [
     AppComponent,
     RegistrationComponent,
-    HomeComponent,
     AuthorizationComponent,
     LoginComponent,
     SearchComponent,
     PasswordResetComponent,
     DisciplineComponent,
-    NavigationStackComponent
+    FooterComponent,
+    HeaderComponent,
+    SiderComponent,
+    MainComponent,
+    AlphabeticalListComponent,
+    NetworkComponent
   ],
   imports: [
     BrowserModule,

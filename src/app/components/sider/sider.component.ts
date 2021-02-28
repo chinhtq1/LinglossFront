@@ -3,11 +3,11 @@ import { Discipline } from '../../models/discipline';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-sider',
+  templateUrl: './sider.component.html',
+  styleUrls: ['./sider.component.scss']
 })
-export class HomeComponent {
+export class SiderComponent {
   disciplines: Discipline[] = [
     {id: 1, name: 'Discipline1'},
     {id: 2, name: 'Discipline2'}

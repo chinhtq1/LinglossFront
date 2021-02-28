@@ -1,0 +1,19 @@
+.inner-layout {
+  padding: 24px 24px;
+}
+
+nz-content {
+  background: #fff;
+  padding: 50px 24px 24px;
+  min-height: 280px;
+  text-align: center;
+}
+
+nz-footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  color: grey;
+  background-color: #00012b;
+  height: 40px;
+}
