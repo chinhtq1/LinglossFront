@@ -1,0 +1,20 @@
+<span (click)="showModal()">Authorization</span>
+<nz-modal
+  [(nzVisible)]="isVisible"
+  (nzOnCancel)="handleCancel()"
+  (nzOnOk)="handleOk()"
+  [nzOkLoading]="isOkLoading"
+  nzWidth="650px"
+  nzFooter="null"
+>
+  <div *nzModalContent>
+    <nz-tabset>
+      <nz-tab nzTitle="Login">
+        <app-login></app-login>
+      </nz-tab>
+      <nz-tab nzTitle="Registration">
+        <app-registration></app-registration>
+      </nz-tab>
+    </nz-tabset>
+  </div>
+</nz-modal>
