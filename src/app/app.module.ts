@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {RouterModule} from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { ru_RU } from 'ng-zorro-antd/i18n';
@@ -36,6 +36,17 @@ import { SiderComponent } from './components/sider/sider.component';
 import { MainComponent } from './components/main/main.component';
 import { AlphabeticalListComponent } from './components/alphabetical-list/alphabetical-list.component';
 import { NetworkComponent } from './components/network/network.component';
+import { AddTermComponent } from './components/add-term/add-term.component';
+import { TermsService } from './services/term.service';
+import { IconDefinition } from '@ant-design/icons-angular';
+
+
+// import * as AllIcons from '@ant-design/icons-angular/icons';
+//
+// const antDesignIcons = AllIcons as {
+//   [key: string]: IconDefinition;
+// };
+// const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesignIcons[key]);
 
 registerLocaleData(ru);
 
@@ -53,7 +64,8 @@ registerLocaleData(ru);
     SiderComponent,
     MainComponent,
     AlphabeticalListComponent,
-    NetworkComponent
+    NetworkComponent,
+    AddTermComponent
   ],
   imports: [
     BrowserModule,
@@ -72,13 +84,17 @@ registerLocaleData(ru);
     NzLayoutModule,
     NzTypographyModule,
     NzBreadCrumbModule,
-    NzIconModule,
     NzSelectModule,
     NzCheckboxModule,
     NzTabsModule,
-    NzDropDownModule
+    NzDropDownModule,
+    NzIconModule.forRoot(icons)
   ],
-  providers: [{ provide: NZ_I18N, useValue: ru_RU }],
+  providers: [
+    {provide: NZ_I18N, useValue: ru_RU},
+    TermsService
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

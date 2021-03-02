@@ -18,7 +18,7 @@ Student:
   - etc.
 
 Teacher:
-  - Search terms and meanings,
+  - Search terms,
   - Edit added by users terms,
   - Supplement translations into another languages,
   - Write core terms,
