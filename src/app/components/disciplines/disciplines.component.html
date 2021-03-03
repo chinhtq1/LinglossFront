@@ -1,0 +1,9 @@
+<nz-list nzItemLayout="horizontal" nzBordered="true" [nzLoading]="loading" nzHeader="Disciplines">
+  <nz-list-item *ngFor="let discipline of disciplines">
+    <nz-list-item-meta nzDescription="{{discipline.tutor}}">
+      <nz-list-item-meta-title>{{discipline.name}}</nz-list-item-meta-title>
+    </nz-list-item-meta>
+  </nz-list-item>
+  <nz-list-empty *ngIf="disciplines.length === 0"></nz-list-empty>
+</nz-list>
+

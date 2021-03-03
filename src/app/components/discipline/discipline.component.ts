@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DisciplineService } from '../../services/discipline.service';
+import { Discipline } from '../../models/discipline';
 
 @Component({
   selector: 'app-discipline',
@@ -8,18 +10,15 @@ import { Router } from '@angular/router';
 })
 export class DisciplineComponent implements OnInit {
 
-  discipline: string;
-  text: string;
+  discipline: Discipline = {} as Discipline;
 
-  constructor(private router: Router) {
+  constructor(private router: Router,
+              private disciplineService: DisciplineService) {
   }
 
   ngOnInit(): void {
-    this.discipline = this.router.url;
-    this.text = 'Ant Design, a design language for background applications, is refined by Ant UED Team. Ant Design, a design language for background\n' +
-      '  applications, is refined by Ant UED Team. Ant Design, a design language for background applications, is refined by Ant UED Team. Ant\n' +
-      '  Design, a design language for background applications, is refined by Ant UED Team. Ant Design, a design language for background\n' +
-      '  applications, is refined by Ant UED Team. Ant Design';
+    this.discipline.name = this.router.url.substring(12);
+    this.disciplineService.getDisciplineByName(this.discipline.name).subscribe(discipline => this.discipline = discipline);
   }
 
 }

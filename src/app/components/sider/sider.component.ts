@@ -1,19 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Discipline } from '../../models/discipline';
 import { Router } from '@angular/router';
+import { UserService } from '../../services/user.service';
+import { DisciplineService } from '../../services/discipline.service';
 
 @Component({
   selector: 'app-sider',
   templateUrl: './sider.component.html',
   styleUrls: ['./sider.component.scss']
 })
-export class SiderComponent {
-  disciplines: Discipline[] = [
-    {id: 1, name: 'Discipline1'},
-    {id: 2, name: 'Discipline2'}
-  ];
+export class SiderComponent implements OnInit {
+  disciplines: Discipline[] = [];
 
-  constructor(public router: Router) {
+  constructor(public router: Router,
+              private userService: UserService,
+              private disciplineService: DisciplineService) {
+  }
+
+  ngOnInit(): void {
+    this.userService.getUser('1').subscribe(data => {
+      data.disciplines.forEach(id => this.disciplineService.getDiscipline(id).subscribe(discipline => {
+        this.disciplines.push(discipline);
+      }));
+    }); // TODO get user id from localstorage
   }
 
   navigateToDiscipline(discipline: Discipline): void {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { TermsService } from '../../services/term.service';
+import { TermService } from '../../services/term.service';
 import { Term } from '../../models/term';
 
 @Component({
@@ -50,7 +50,7 @@ export class AddTermComponent implements OnInit {
   }
 
   constructor(private fb: FormBuilder,
-              private termsService: TermsService) {
+              private termsService: TermService) {
   }
 
   ngOnInit(): void {
@@ -65,7 +65,7 @@ export class AddTermComponent implements OnInit {
 
   handleOk(): void {
     this.term.name = this.validateForm.controls[0].value;
-    this.term.id = null;
+    this.term._id = null;
     this.isVisible = false;
     this.termsService.sendTerm(this.term).subscribe();
   }

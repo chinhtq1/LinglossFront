@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Term } from '../models/term';
 
 @Injectable({providedIn: 'root'})
-export class TermsService {
+export class TermService {
 
   private termsUrl = 'http://localhost:8080/api/terms';
 
@@ -20,7 +20,6 @@ export class TermsService {
   }
 
   sendTerm(term): Observable<Term> {
-    console.log('send', term);
     return this.http.post<Term>(this.termsUrl + '/add-term', term);
   }
 }

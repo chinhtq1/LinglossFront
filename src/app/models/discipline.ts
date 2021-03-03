@@ -1,5 +1,6 @@
 export interface Discipline {
-  id: number;
+  _id: string;
   name: string;
-  description?: string;
+  description: string;
+  tutor: string;
 }

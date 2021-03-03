@@ -37,16 +37,10 @@ import { MainComponent } from './components/main/main.component';
 import { AlphabeticalListComponent } from './components/alphabetical-list/alphabetical-list.component';
 import { NetworkComponent } from './components/network/network.component';
 import { AddTermComponent } from './components/add-term/add-term.component';
-import { TermsService } from './services/term.service';
-import { IconDefinition } from '@ant-design/icons-angular';
-
-
-// import * as AllIcons from '@ant-design/icons-angular/icons';
-//
-// const antDesignIcons = AllIcons as {
-//   [key: string]: IconDefinition;
-// };
-// const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesignIcons[key]);
+import { TermService } from './services/term.service';
+import { DisciplinesComponent } from './components/disciplines/disciplines.component';
+import { NzListModule } from 'ng-zorro-antd/list';
+import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
 
 registerLocaleData(ru);
 
@@ -65,7 +59,8 @@ registerLocaleData(ru);
     MainComponent,
     AlphabeticalListComponent,
     NetworkComponent,
-    AddTermComponent
+    AddTermComponent,
+    DisciplinesComponent
   ],
   imports: [
     BrowserModule,
@@ -88,11 +83,13 @@ registerLocaleData(ru);
     NzCheckboxModule,
     NzTabsModule,
     NzDropDownModule,
-    NzIconModule.forRoot(icons)
+    NzIconModule,
+    NzListModule,
+    NzSkeletonModule
   ],
   providers: [
     {provide: NZ_I18N, useValue: ru_RU},
-    TermsService
+    TermService
   ],
   bootstrap: [AppComponent]
 })
