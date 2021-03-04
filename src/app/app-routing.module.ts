@@ -7,7 +7,7 @@ import { DisciplinesComponent } from './components/disciplines/disciplines.compo
 const routes: Routes = [
   {path: '', redirectTo: 'start', pathMatch: 'full'},
   {path: 'start', component: MainComponent},
-  {path: 'discipline/:name', component: DisciplineComponent},
+  {path: 'disciplines/:name', component: DisciplineComponent},
   {path: 'disciplines', component: DisciplinesComponent}
 ];
 

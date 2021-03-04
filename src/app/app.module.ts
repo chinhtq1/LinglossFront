@@ -41,6 +41,7 @@ import { TermService } from './services/term.service';
 import { DisciplinesComponent } from './components/disciplines/disciplines.component';
 import { NzListModule } from 'ng-zorro-antd/list';
 import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
+import { NzMessageModule } from 'ng-zorro-antd/message';
 
 registerLocaleData(ru);
 
@@ -85,7 +86,8 @@ registerLocaleData(ru);
     NzDropDownModule,
     NzIconModule,
     NzListModule,
-    NzSkeletonModule
+    NzSkeletonModule,
+    NzMessageModule
   ],
   providers: [
     {provide: NZ_I18N, useValue: ru_RU},

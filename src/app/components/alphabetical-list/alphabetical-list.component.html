@@ -1,1 +1,15 @@
-<p>alphabetical-list works!</p>
+<nz-page-header class="site-page-header" nzTitle="Terms of the {{discipline.name}}"></nz-page-header>
+<nz-list nzItemLayout="horizontal" nzBordered="true" nzSize="default" [nzLoading]="loading" style="margin-left: 40px">
+  <nz-list-item *ngFor="let term of terms">
+    <nz-list-item-meta style="display: block">
+      <nz-list-item-meta-title>{{term.name}}</nz-list-item-meta-title>
+    </nz-list-item-meta>
+    <ul nz-list-item-actions>
+      <nz-list-item-action>
+        <a>Edit</a>
+      </nz-list-item-action>
+    </ul>
+  </nz-list-item>
+  <nz-list-empty *ngIf="terms.length === 0"></nz-list-empty>
+</nz-list>
+

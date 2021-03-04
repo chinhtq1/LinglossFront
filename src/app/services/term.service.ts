@@ -22,4 +22,8 @@ export class TermService {
   sendTerm(term): Observable<Term> {
     return this.http.post<Term>(this.termsUrl + '/add-term', term);
   }
+
+  getTermsByDiscipline(name): Observable<Term[]> {
+    return this.http.get<Term[]>(this.termsUrl + '/discipline/' + name);
+  }
 }

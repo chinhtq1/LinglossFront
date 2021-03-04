@@ -4,13 +4,13 @@
   <app-add-term></app-add-term>
   <nz-tabset>
     <nz-tab [nzTitle]="'Search in bar'">
-      <app-search></app-search>
+      <app-search [discipline]="discipline"></app-search>
     </nz-tab>
     <nz-tab [nzTitle]="'Search alphabetically'">
-      <app-alphabetical-list></app-alphabetical-list>
+      <app-alphabetical-list [discipline]="discipline"></app-alphabetical-list>
     </nz-tab>
     <nz-tab [nzTitle]="'Explore network'">
-      <app-network></app-network>
+      <app-network [discipline]="discipline"></app-network>
     </nz-tab>
   </nz-tabset>
 </div>

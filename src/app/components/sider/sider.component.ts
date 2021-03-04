@@ -15,6 +15,10 @@ export class SiderComponent implements OnInit {
   constructor(public router: Router,
               private userService: UserService,
               private disciplineService: DisciplineService) {
+    // tslint:disable-next-line:only-arrow-functions
+    this.router.routeReuseStrategy.shouldReuseRoute = function() {
+      return false;
+    };
   }
 
   ngOnInit(): void {
@@ -26,6 +30,6 @@ export class SiderComponent implements OnInit {
   }
 
   navigateToDiscipline(discipline: Discipline): void {
-    this.router.navigate(['discipline/' + discipline.name]);
+    this.router.navigate(['disciplines/' + discipline.name]);
   }
 }
