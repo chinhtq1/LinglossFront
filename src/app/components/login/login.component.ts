@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UserService } from '../../services/user.service';
+import { LocalStorageService } from '../../services/local-storage.service';
+import { User } from '../../models/user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,20 +13,34 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class LoginComponent implements OnInit {
   validateForm!: FormGroup;
 
-  submitForm(): void {
-    for (const i in this.validateForm.controls) {
-      this.validateForm.controls[i].markAsDirty();
-      this.validateForm.controls[i].updateValueAndValidity();
-    }
+  constructor(private fb: FormBuilder,
+              private userService: UserService,
+              private lss: LocalStorageService,
+              private router: Router) {
   }
-
-  constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({
-      email: [null, [Validators.required]],
+      email: [null, [Validators.required, Validators.email]],
       password: [null, [Validators.required]],
       remember: [true]
+    });
+  }
+
+  submitForm(): void {
+    let user = {} as User;
+    this.userService.login(this.validateForm.controls.email.value, this.validateForm.controls.password.value).subscribe(result => {
+      user = result;
+      if (result._id) {
+        this.lss.setUser(user);
+        if (result.role === 'STUDENT') {
+          this.router.navigate(['/start']);
+        } else if (result.role === 'TEACHER') {
+          this.router.navigate(['/start']);
+        }
+      } else {
+        alert('unauthorized');
+      }
     });
   }
 }

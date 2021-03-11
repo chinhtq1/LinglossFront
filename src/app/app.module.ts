@@ -42,6 +42,8 @@ import { DisciplinesComponent } from './components/disciplines/disciplines.compo
 import { NzListModule } from 'ng-zorro-antd/list';
 import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
 import { NzMessageModule } from 'ng-zorro-antd/message';
+import { PreferencesComponent } from './components/preferences/preferences.component';
+import { AboutComponent } from './components/about/about.component';
 
 registerLocaleData(ru);
 
@@ -61,7 +63,9 @@ registerLocaleData(ru);
     AlphabeticalListComponent,
     NetworkComponent,
     AddTermComponent,
-    DisciplinesComponent
+    DisciplinesComponent,
+    PreferencesComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
