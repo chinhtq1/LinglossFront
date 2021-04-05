@@ -27,11 +27,16 @@ export class TermComponent implements OnInit {
 
     this.header = name;
 
+    this.term.description = '';
+    this.term.attributes.push([['desciption'], [this.term.description]]);
+
     this.termService.getTermByNameAndDiscipline(name, discipline).subscribe(term => {
-        term.attributes.forEach(a => {
-          this.term.attributes.push(Object.entries(a));
-          console.log(Object.entries(a)); // TODO refactor
-        });
+      if (term.attributes) {
+          term.attributes.forEach(a => {
+            this.term.attributes.push(Object.entries(a));
+            console.log(Object.entries(a)); // TODO refactor
+          });
+        }
       }
     );
   }
