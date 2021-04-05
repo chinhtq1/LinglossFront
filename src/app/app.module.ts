@@ -44,6 +44,7 @@ import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
 import { NzMessageModule } from 'ng-zorro-antd/message';
 import { PreferencesComponent } from './components/preferences/preferences.component';
 import { AboutComponent } from './components/about/about.component';
+import { TermComponent } from './components/term/term.component';
 
 registerLocaleData(ru);
 
@@ -65,7 +66,8 @@ registerLocaleData(ru);
     AddTermComponent,
     DisciplinesComponent,
     PreferencesComponent,
-    AboutComponent
+    AboutComponent,
+    TermComponent
   ],
   imports: [
     BrowserModule,

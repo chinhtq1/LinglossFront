@@ -1,6 +1,6 @@
 <nz-page-header class="site-page-header" nzTitle="Terms of the {{discipline.name}}"></nz-page-header>
 <nz-list nzItemLayout="horizontal" nzBordered="true" nzSize="default" [nzLoading]="loading" style="margin-left: 40px">
-  <nz-list-item *ngFor="let term of terms">
+  <nz-list-item *ngFor="let term of terms" routerLink="{{term.name}}" style="cursor: pointer">
     <nz-list-item-meta style="display: block">
       <nz-list-item-meta-title>{{term.name}}</nz-list-item-meta-title>
     </nz-list-item-meta>

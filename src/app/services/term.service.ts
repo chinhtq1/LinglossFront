@@ -19,6 +19,10 @@ export class TermService {
     return this.http.get<Term>(this.termsUrl + '/find-all-terms/' + id);
   }
 
+  getTermByNameAndDiscipline(name: string, discipline: string): Observable<Term> {
+    return this.http.get<Term>(this.termsUrl + '/find-by-name-and-discipline/' + name + '/' + discipline);
+  }
+
   sendTerm(term): Observable<Term> {
     return this.http.post<Term>(this.termsUrl + '/add-term', term);
   }

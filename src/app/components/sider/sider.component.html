@@ -1,11 +1,5 @@
 <ul nz-menu nzMode="inline" class="sider-menu">
-  <li nz-submenu nzTitle="Disciplines">
-    <ul>
-      <li nz-menu-item routerLink="/disciplines">
-        Show all disciplines
-      </li>
-    </ul>
-  </li>
+  <li nz-menu-item routerLink="/disciplines">All disciplines</li>
   <li nz-submenu nzOpen nzTitle="My disciplines">
     <ul>
       <li *ngFor="let discipline of disciplines" nz-menu-item (click)="navigateToDiscipline(discipline)">
@@ -13,6 +7,7 @@
       </li>
     </ul>
   </li>
+  <li nz-menu-item routerLink="/network">Explore network</li>
   <li nz-submenu nzTitle="User settings">
     <ul>
       <li nz-menu-item>

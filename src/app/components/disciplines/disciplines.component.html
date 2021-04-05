@@ -1,6 +1,6 @@
 <nz-page-header class="site-page-header" nzTitle="Available disciplines"></nz-page-header>
 <nz-list nzItemLayout="horizontal" nzBordered="true" nzSize="default" [nzLoading]="loading">
-  <nz-list-item *ngFor="let discipline of disciplines">
+  <nz-list-item *ngFor="let discipline of disciplines" style="cursor: default">
     <nz-list-item-meta nzDescription="{{discipline.tutor}}" style="display: block">
       <nz-list-item-meta-title>{{discipline.name}}</nz-list-item-meta-title>
     </nz-list-item-meta>

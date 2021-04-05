@@ -1,0 +1,7 @@
+<div>
+  <nz-list nzSplit nzHeader="{{header}}">
+    <nz-list-item *ngFor="let attribute of term.attributes">
+      <span nz-typography>{{attribute[0][0]}}: {{attribute[0][1]}}</span>
+    </nz-list-item>
+  </nz-list>
+</div>

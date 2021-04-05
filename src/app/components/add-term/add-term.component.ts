@@ -28,7 +28,6 @@ export class AddTermComponent implements OnInit {
       controlInstance: `${id}`
     };
     const index = this.listOfControl.push(control);
-    console.log(this.listOfControl[this.listOfControl.length - 1]);
     this.validateForm.addControl(this.listOfControl[index - 1].controlInstance, new FormControl(null, Validators.required));
   }
 
@@ -43,6 +42,7 @@ export class AddTermComponent implements OnInit {
   }
 
   submitForm(): void {
+    // tslint:disable-next-line:forin
     for (const i in this.validateForm.controls) {
       this.validateForm.controls[i].markAsDirty();
       this.validateForm.controls[i].updateValueAndValidity();

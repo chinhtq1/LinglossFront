@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
+  mode = 'Student mode'; // TODO get from localstorage user
   constructor() { }
 
   ngOnInit(): void {
