@@ -1,19 +1,28 @@
 <div class="search-wrapper">
-  <nz-input-group nzSearch nzSize="large" [nzAddOnAfter]="suffixIconButton">
-    <input type="text" nz-input placeholder="Input the term"/>
-  </nz-input-group>
-  <ng-template #suffixIconButton>
-    <button nz-button nzType="primary" nzSearch><i nz-icon nzType="search"></i></button>
-  </ng-template>
-  <a nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu">
-    Choose the language
-    <i nz-icon nzType="down"></i>
-  </a>
+  <nz-select
+    nzShowSearch
+    nzSize="large"
+    nzPlaceHolder="Input the term"
+    [(ngModel)]="selectedValue"
+    [nzNotFoundContent]="'No terms found'"
+    [nzShowArrow]="false"
+    [nzOptionOverflowSize]="7"
+    (nzOnSearch)="search($event)"
+  >
+    <nz-option *ngFor="let o of listOfOption" [nzLabel]="o.name + ' in ' + o.discipline" [nzValue]="o"> </nz-option>
+  </nz-select>
+  <button nz-button nzType="primary" (click)="clear()"><i nz-icon nzType="close"></i></button>
+  <button nz-button nzType="default" nzDanger (click)="explore()"><i nz-icon nzType="search"></i></button>
+
+<!--  <a nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu">-->
+<!--    Choose the language-->
+<!--    <i nz-icon nzType="down"></i>-->
+<!--  </a>-->
 </div>
-<nz-dropdown-menu #menu="nzDropdownMenu">
-  <ul nz-menu>
-    <li nz-menu-item>English</li>
-    <li nz-menu-item>Russian</li>
-  </ul>
-</nz-dropdown-menu>
+<!--<nz-dropdown-menu #menu="nzDropdownMenu">-->
+<!--  <ul nz-menu>-->
+<!--    <li nz-menu-item>English</li>-->
+<!--    <li nz-menu-item>Russian</li>-->
+<!--  </ul>-->
+<!--</nz-dropdown-menu>-->
 

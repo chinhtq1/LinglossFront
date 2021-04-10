@@ -23,11 +23,15 @@ export class TermService {
     return this.http.get<Term>(this.termsUrl + '/find-by-name-and-discipline/' + name + '/' + discipline);
   }
 
-  sendTerm(term): Observable<Term> {
+  sendTerm(term: Term): Observable<Term> {
     return this.http.post<Term>(this.termsUrl + '/add-term', term);
   }
 
-  getTermsByDiscipline(name): Observable<Term[]> {
+  getTermsByDiscipline(name: string): Observable<Term[]> {
     return this.http.get<Term[]>(this.termsUrl + '/discipline/' + name);
+  }
+
+  findTerm(value: string): Observable<Term[]> {
+    return this.http.get<Term[]>(this.termsUrl + '/search-' + value);
   }
 }
