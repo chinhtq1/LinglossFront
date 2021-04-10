@@ -27,8 +27,8 @@ export class TermComponent implements OnInit {
 
     this.header = name;
 
-    this.term.description = '';
-    this.term.attributes.push([['desciption'], [this.term.description]]);
+    this.term.definition = '';
+    this.term.attributes.push([['Definition'], [this.term.definition]]);
 
     this.termService.getTermByNameAndDiscipline(name, discipline).subscribe(term => {
       if (term.attributes) {
