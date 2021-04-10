@@ -45,6 +45,7 @@ import { NzMessageModule } from 'ng-zorro-antd/message';
 import { PreferencesComponent } from './components/preferences/preferences.component';
 import { AboutComponent } from './components/about/about.component';
 import { TermComponent } from './components/term/term.component';
+import {NgxGraphModule} from "@swimlane/ngx-graph";
 
 registerLocaleData(ru);
 
@@ -93,7 +94,8 @@ registerLocaleData(ru);
     NzIconModule,
     NzListModule,
     NzSkeletonModule,
-    NzMessageModule
+    NzMessageModule,
+    NgxGraphModule
   ],
   providers: [
     {provide: NZ_I18N, useValue: ru_RU},
