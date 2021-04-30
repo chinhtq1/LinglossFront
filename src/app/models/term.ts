@@ -1,5 +1,5 @@
 export interface Term {
-  _id: string;
+  id: string;
   name: string;
   definition: string;
   discipline: string;

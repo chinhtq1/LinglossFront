@@ -2,49 +2,8 @@
   [showMiniMap]="false"
   [autoCenter]="true"
   [autoZoom]="true"
-  [links]="[
-    {
-      id: 'a',
-      source: 'first',
-      target: 'second'
-    }, {
-      id: 'b',
-      source: 'first',
-      target: 'third'
-    },
-    {
-      id: 'c',
-      source: 'first',
-      target: '4'
-    }, {
-      id: 'd',
-      source: 'first',
-      target: '5'
-    }
-  ]"
-  [nodes]="[
-    {
-      id: 'first',
-      label: 'A'
-    }, {
-      id: 'second',
-      label: 'B'
-    }, {
-      id: 'third',
-      label: 'C',
-      color: 'red'
-    },
-    {
-      id: '4',
-      label: 'D',
-      color: 'red'
-    },
-    {
-      id: '5',
-      label: 'E',
-      color: 'red'
-    }
-  ]"
+  [links]="links"
+  [nodes]="nodes"
 >
   <ng-template #nodeTemplate let-node>
     <svg:g class="node">
