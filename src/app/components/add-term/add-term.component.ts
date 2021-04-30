@@ -65,7 +65,7 @@ export class AddTermComponent implements OnInit {
 
   handleOk(): void {
     this.term.name = this.validateForm.controls[0].value;
-    this.term._id = null;
+    this.term.id = null;
     this.isVisible = false;
     this.termsService.sendTerm(this.term).subscribe();
   }
