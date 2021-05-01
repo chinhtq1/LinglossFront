@@ -15,8 +15,7 @@ const routes: Routes = [
   {path: 'disciplines/:name/:name', component: TermComponent}, // first parameter is discipline name, second is term name
   {path: 'disciplines', component: DisciplinesComponent},
   {path: 'preferences', component: PreferencesComponent},
-  {path: 'about', component: AboutComponent},
-  {path: 'network', component: NetworkComponent}
+  {path: 'about', component: AboutComponent}
 ];
 
 @NgModule({

@@ -45,6 +45,9 @@ import { NzMessageModule } from 'ng-zorro-antd/message';
 import { PreferencesComponent } from './components/preferences/preferences.component';
 import { AboutComponent } from './components/about/about.component';
 import { TermComponent } from './components/term/term.component';
+import {NgxGraphModule} from "@swimlane/ngx-graph";
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 registerLocaleData(ru);
 
@@ -93,7 +96,14 @@ registerLocaleData(ru);
     NzIconModule,
     NzListModule,
     NzSkeletonModule,
-    NzMessageModule
+    NzMessageModule,
+    NgxGraphModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
   providers: [
     {provide: NZ_I18N, useValue: ru_RU},

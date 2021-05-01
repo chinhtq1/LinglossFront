@@ -11,27 +11,25 @@ import {PRIMARY_OUTLET, Router, UrlSegment, UrlSegmentGroup, UrlTree} from '@ang
 export class TermComponent implements OnInit {
 
   term: Term = {attributes: []} as Term;
-
   header = '';
 
   constructor(private termService: TermService,
               private router: Router) {
-  }
-
-  ngOnInit(): void {
     const tree: UrlTree = this.router.parseUrl(this.router.url);
     const g: UrlSegmentGroup = tree.root.children[PRIMARY_OUTLET];
     const s: UrlSegment[] = g.segments;
     const discipline = s[1].path;
     const name = s[2].path;
 
-    this.header = name;
-
-    this.term.description = '';
-    this.term.attributes.push([['desciption'], [this.term.description]]);
+    this.header = this.term.name = name;
 
     this.termService.getTermByNameAndDiscipline(name, discipline).subscribe(term => {
-      if (term.attributes) {
+        this.term.id = term.id;
+        this.term.name = term.name;
+        this.term.discipline = term.discipline;
+        this.term.definition = term.definition;
+        this.term.attributes.push([['Definition'], [term.definition]]);
+        if (term.attributes) {
           term.attributes.forEach(a => {
             this.term.attributes.push(Object.entries(a));
             console.log(Object.entries(a)); // TODO refactor
@@ -39,5 +37,8 @@ export class TermComponent implements OnInit {
         }
       }
     );
+  }
+
+  ngOnInit(): void {
   }
 }

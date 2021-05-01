@@ -34,4 +34,8 @@ export class TermService {
   findTerm(value: string): Observable<Term[]> {
     return this.http.get<Term[]>(this.termsUrl + '/search-' + value);
   }
+
+  getNetwork(termName: string): Observable<Term[]> {
+    return this.http.get<Term[]>(this.termsUrl + '/network-for-' + termName);
+  }
 }
