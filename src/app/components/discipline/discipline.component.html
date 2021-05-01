@@ -1,7 +1,7 @@
-<nz-page-header class="site-page-header" nzTitle="{{discipline.name}}"></nz-page-header>
+<nz-page-header nzTitle="{{discipline.name}}"></nz-page-header>
 <p nz-typography>{{discipline.description}}</p>
-<div class="card-container">
-  <app-add-term></app-add-term>
+<div class="card-container" *ngIf="!mobile; else mobileContainer">
+<!--  <app-add-term></app-add-term>-->
   <nz-tabset>
     <nz-tab [nzTitle]="'Search in bar'">
       <app-search [discipline]="discipline"></app-search>
@@ -11,3 +11,13 @@
     </nz-tab>
   </nz-tabset>
 </div>
+<ng-template #mobileContainer>
+  <ul nz-menu [nzMode]="'inline'" style="border: none">
+    <li nz-submenu nzTitle="Search in bar">
+      <app-search [discipline]="discipline"></app-search>
+    </li>
+    <li nz-submenu nzTitle="Search alphabetically">
+      <app-alphabetical-list [discipline]="discipline"></app-alphabetical-list>
+    </li>
+  </ul>
+</ng-template>

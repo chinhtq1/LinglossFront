@@ -1,7 +1,7 @@
 export interface Term {
   id: string;
   name: string;
-  definition: string;
   discipline: string;
+  definition: string;
   attributes?: any[];
 }

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {Component, HostListener, Input, OnInit} from '@angular/core';
 import { Discipline } from '../../models/discipline';
 import { Term } from '../../models/term';
 import { Router } from '@angular/router';
@@ -16,11 +16,19 @@ export class AlphabeticalListComponent implements OnInit {
   loading = false;
   terms: Term[] = [];
 
+  mobile: boolean;
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event): void {
+    this.mobile = window.innerWidth < 600;
+  }
+
   constructor(private router: Router,
               private termService: TermService) {
   }
 
   ngOnInit(): void {
+    this.mobile = window.innerWidth < 600;
     this.termService.getTermsByDiscipline(this.discipline.name).subscribe(terms => this.terms = terms);
   }
 

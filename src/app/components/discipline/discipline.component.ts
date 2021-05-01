@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import { DisciplineService } from '../../services/discipline.service';
 import { Discipline } from '../../models/discipline';
@@ -10,10 +10,17 @@ import { Discipline } from '../../models/discipline';
 })
 export class DisciplineComponent implements OnInit {
 
+  mobile: boolean;
   discipline: Discipline = {} as Discipline;
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event): void {
+    this.mobile = window.innerWidth < 600;
+  }
 
   constructor(private route: ActivatedRoute,
               private disciplineService: DisciplineService) {
+    this.mobile = window.innerWidth < 600;
   }
 
   ngOnInit(): void {

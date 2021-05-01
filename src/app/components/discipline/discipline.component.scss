@@ -17,3 +17,17 @@ p {
   text-align: justify;
   margin: 0 48px;
 }
+
+@media only screen and (max-width: 600px) {
+  nz-page-header {
+    display: flex;
+    justify-content: center;
+  }
+  p {
+    margin: 0 20px;
+  }
+  ul {
+    color: #1890ff;
+  }
+}
+

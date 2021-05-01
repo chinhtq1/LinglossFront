@@ -1,6 +1,4 @@
-import { Component } from '@angular/core';
-import { Discipline } from './models/discipline';
-import { Router } from '@angular/router';
+import {Component, HostListener} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -9,4 +7,19 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'Lingloss';
+  collapsed = true;
+  mobile: boolean;
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event): void {
+    this.mobile = window.innerWidth < 600;
+  }
+
+  closeSider(event): void {
+    this.collapsed = event;
+  }
+
+  constructor() {
+    this.mobile = window.innerWidth < 600;
+  }
 }

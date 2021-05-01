@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import { Discipline } from '../../models/discipline';
 import { Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
@@ -11,6 +11,9 @@ import { DisciplineService } from '../../services/discipline.service';
 })
 export class SiderComponent implements OnInit {
   disciplines: Discipline[] = [];
+
+  @Output()
+  closeSider = new EventEmitter<boolean>();
 
   constructor(public router: Router,
               private userService: UserService,
@@ -27,6 +30,11 @@ export class SiderComponent implements OnInit {
         this.disciplines.push(discipline);
       }));
     }); // TODO get user id from localstorage
+  }
+
+  navigateToAllDisciplines(): void {
+    this.closeSider.emit(true);
+    this.router.navigate(['disciplines/']);
   }
 
   navigateToDiscipline(discipline: Discipline): void {

@@ -11,10 +11,19 @@ nz-content {
 
 nz-footer {
   display: flex;
-  justify-content: center;
+  justify-content: end;
   align-items: center;
-  text-align: center;
   color: grey;
   background-color: #00012b;
   height: 40px;
+}
+
+.empty-content {
+  background-color: #777777;
+}
+
+@media only screen and (max-width: 600px) {
+  nz-content {
+    padding: 22px;
+  }
 }

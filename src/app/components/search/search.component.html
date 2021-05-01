@@ -9,15 +9,18 @@
     [nzOptionOverflowSize]="7"
     (nzOnSearch)="search($event)"
   >
-    <nz-option *ngFor="let o of listOfOption" [nzLabel]="o.name + ' in ' + o.discipline" [nzValue]="o"> </nz-option>
+    <nz-option *ngFor="let o of listOfOption" [nzLabel]="o.name + ' in ' + o.discipline" [nzValue]="o"></nz-option>
   </nz-select>
   <button nz-button nzType="primary" (click)="clear()"><i nz-icon nzType="close"></i></button>
-  <button nz-button nzType="default" nzDanger (click)="explore()"><i nz-icon nzType="search"></i></button>
+  <button nz-button nzType="default" nzDanger (click)="explore()" class="search-button">
+    <span *ngIf="mobile">Search</span>
+    <i nz-icon nzType="search"></i>
+  </button>
 
-<!--  <a nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu">-->
-<!--    Choose the language-->
-<!--    <i nz-icon nzType="down"></i>-->
-<!--  </a>-->
+  <!--  <a nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu">-->
+  <!--    Choose the language-->
+  <!--    <i nz-icon nzType="down"></i>-->
+  <!--  </a>-->
 </div>
 <!--<nz-dropdown-menu #menu="nzDropdownMenu">-->
 <!--  <ul nz-menu>-->

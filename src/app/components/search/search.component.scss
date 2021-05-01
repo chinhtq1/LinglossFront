@@ -1,5 +1,6 @@
 .search-wrapper {
   margin: 40px auto;
+  text-align: center;
 }
 
 .explore-button {
@@ -7,11 +8,24 @@
 }
 
 nz-select {
-  width: 600px;
+  width: 50%;
 }
 
 button {
   height: 40px;
   width: 40px;
   margin-left: 3px;
+}
+
+@media only screen and (max-width: 600px) {
+  nz-select {
+    width: 70%;
+  }
+  .search-button {
+    width: calc(70% + 43px);
+    margin: 5px;
+  }
+  .search-wrapper {
+    margin: 0 20px;
+  }
 }
