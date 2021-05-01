@@ -3,6 +3,7 @@ import {TermService} from '../../services/term.service';
 import {NetworkNode} from '../../models/networkNode';
 import {Term} from '../../models/term';
 import {NetworkLink} from '../../models/networkLink';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-network',
@@ -17,7 +18,8 @@ export class NetworkComponent implements OnInit {
   links: NetworkLink[] = [];
   nodes: NetworkNode[] = [];
 
-  constructor(private termService: TermService) {
+  constructor(private termService: TermService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -31,4 +33,9 @@ export class NetworkComponent implements OnInit {
     });
   }
 
+  navigateToTheTerm(node): void {
+    this.termService.getTerm(node.id).subscribe(term => {
+      this.router.navigate(['disciplines/' + term.discipline + '/' + term.name]);
+    });
+  }
 }
