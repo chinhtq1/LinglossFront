@@ -1,14 +1,10 @@
 .logo {
-  width: 120px;
   float: left;
   h1 {
     color: aliceblue;
   }
   :hover {
     cursor: pointer;
-  }
-  :focus {
-    outline: none;
   }
 }
 
@@ -19,7 +15,4 @@
 
 li {
   font-size: large;
-  :focus {
-    outline: none;
-  }
 }
