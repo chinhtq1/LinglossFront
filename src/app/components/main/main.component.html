@@ -1,3 +1,13 @@
 <h1>Lingloss</h1>
-<p>Desciption</p>
+<div class="text-container">
+  <p>{{description}}</p>
+  <div nz-typography class="points-container">
+    <ul>
+      <li *ngFor="let point of descriptionPoints">
+        <span>{{point}}</span>
+      </li>
+    </ul>
+  </div>
+</div>
 <app-search></app-search>
+

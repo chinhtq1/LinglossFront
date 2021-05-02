@@ -1,0 +1,25 @@
+p, span {
+  text-align: justify;
+}
+ul {
+  text-align: left;
+  margin-left: -10px;
+}
+div {
+  margin: 0 20px 10px;
+  text-align: center;
+}
+.text-container {
+  display: inline-block;
+  margin-top: 20px;
+  margin-bottom: -30px;
+}
+
+@media only screen and (max-width: 600px) {
+  .text-container {
+    margin: 0 30px 18px;
+  }
+  .points-container {
+    margin-top: -7px;
+  }
+}
