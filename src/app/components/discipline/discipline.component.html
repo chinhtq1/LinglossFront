@@ -4,7 +4,7 @@
 <!--  <app-add-term></app-add-term>-->
   <nz-tabset>
     <nz-tab [nzTitle]="'Search in bar'">
-      <app-search [discipline]="discipline"></app-search>
+      <app-search-term [discipline]="discipline"></app-search-term>
     </nz-tab>
     <nz-tab [nzTitle]="'Search alphabetically'">
       <app-alphabetical-list [discipline]="discipline"></app-alphabetical-list>
@@ -14,7 +14,7 @@
 <ng-template #mobileContainer>
   <ul nz-menu [nzMode]="'inline'" style="border: none">
     <li nz-submenu nzTitle="Search in bar">
-      <app-search [discipline]="discipline"></app-search>
+      <app-search-term [discipline]="discipline"></app-search-term>
     </li>
     <li nz-submenu nzTitle="Search alphabetically">
       <app-alphabetical-list [discipline]="discipline"></app-alphabetical-list>

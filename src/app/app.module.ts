@@ -26,7 +26,7 @@ import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { AuthorizationComponent } from './components/authorization/authorization.component';
 import { LoginComponent } from './components/login/login.component';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
-import { SearchComponent } from './components/search/search.component';
+import { SearchTermComponent } from './components/search-term/search-term.component';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { PasswordResetComponent } from './components/password-reset/password-reset.component';
 import { DisciplineComponent } from './components/discipline/discipline.component';
@@ -49,6 +49,7 @@ import {NgxGraphModule} from "@swimlane/ngx-graph";
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { SearchDisciplineComponent } from './components/search-discipline/search-discipline.component';
 
 registerLocaleData(ru);
 
@@ -58,7 +59,7 @@ registerLocaleData(ru);
     RegistrationComponent,
     AuthorizationComponent,
     LoginComponent,
-    SearchComponent,
+    SearchTermComponent,
     PasswordResetComponent,
     DisciplineComponent,
     FooterComponent,
@@ -72,7 +73,8 @@ registerLocaleData(ru);
     PreferencesComponent,
     AboutComponent,
     TermComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    SearchDisciplineComponent
   ],
   imports: [
     BrowserModule,

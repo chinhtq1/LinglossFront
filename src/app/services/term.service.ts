@@ -31,7 +31,7 @@ export class TermService {
     return this.http.get<Term[]>(this.termsUrl + '/discipline/' + name);
   }
 
-  findTerm(value: string): Observable<Term[]> {
+  searchTerms(value: string): Observable<Term[]> {
     return this.http.get<Term[]>(this.termsUrl + '/search-' + value);
   }
 

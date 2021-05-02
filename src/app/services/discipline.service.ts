@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Term } from '../models/term';
 import { Discipline } from '../models/discipline';
 
 @Injectable({providedIn: 'root'})
@@ -26,5 +25,9 @@ export class DisciplineService {
 
   getDisciplineByName(name): Observable<Discipline> {
     return this.http.get<Discipline>(this.disciplinesUrl + '/' + name);
+  }
+
+  searchDisciplines(value: string): Observable<Discipline[]> {
+    return this.http.get<Discipline[]>(this.disciplinesUrl + '/search-discipline-' + value);
   }
 }

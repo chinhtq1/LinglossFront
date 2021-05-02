@@ -5,11 +5,11 @@ import {TermService} from '../../services/term.service';
 import {Router} from '@angular/router';
 
 @Component({
-  selector: 'app-search',
-  templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss']
+  selector: 'app-search-term',
+  templateUrl: './search-term.component.html',
+  styleUrls: ['./search-term.component.scss']
 })
-export class SearchComponent {
+export class SearchTermComponent {
   @Input()
   discipline: Discipline;
 
@@ -30,7 +30,7 @@ export class SearchComponent {
   }
 
   search(value: string): void {
-    this.termService.findTerm(value)
+    this.termService.searchTerms(value)
       .subscribe(data => {
         this.listOfOption = [];
         data.forEach(term => {
