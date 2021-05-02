@@ -48,6 +48,7 @@ import { TermComponent } from './components/term/term.component';
 import {NgxGraphModule} from "@swimlane/ngx-graph";
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 registerLocaleData(ru);
 
@@ -70,7 +71,8 @@ registerLocaleData(ru);
     DisciplinesComponent,
     PreferencesComponent,
     AboutComponent,
-    TermComponent
+    TermComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

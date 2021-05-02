@@ -5,8 +5,8 @@ import { MainComponent } from './components/main/main.component';
 import { DisciplinesComponent } from './components/disciplines/disciplines.component';
 import { PreferencesComponent } from './components/preferences/preferences.component';
 import { AboutComponent } from './components/about/about.component';
-import {NetworkComponent} from './components/network/network.component';
 import {TermComponent} from './components/term/term.component';
+import {NotFoundComponent} from './components/not-found/not-found.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'start', pathMatch: 'full'},
@@ -15,7 +15,9 @@ const routes: Routes = [
   {path: 'disciplines/:name/:name', component: TermComponent}, // first parameter is discipline name, second is term name
   {path: 'disciplines', component: DisciplinesComponent},
   {path: 'preferences', component: PreferencesComponent},
-  {path: 'about', component: AboutComponent}
+  {path: 'about', component: AboutComponent},
+  {path: '404', component: NotFoundComponent},
+  {path: '**', redirectTo: '/404'}
 ];
 
 @NgModule({
