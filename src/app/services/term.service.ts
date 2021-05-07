@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Term } from '../models/term';
+import {environment} from '../../environments/environment';
 
 @Injectable({providedIn: 'root'})
 export class TermService {
 
-  private termsUrl = 'http://localhost:8080/api/terms';
+  private termsUrl = environment.termsUrl;
 
   constructor(private http: HttpClient) {
   }

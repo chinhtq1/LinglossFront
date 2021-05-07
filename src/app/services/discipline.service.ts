@@ -2,11 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Discipline } from '../models/discipline';
+import {environment} from '../../environments/environment';
+
 
 @Injectable({providedIn: 'root'})
 export class DisciplineService {
 
-  private disciplinesUrl = 'http://localhost:8080/api/disciplines';
+  private disciplinesUrl = environment.disciplinesUrl;
 
   constructor(private http: HttpClient) {
   }
