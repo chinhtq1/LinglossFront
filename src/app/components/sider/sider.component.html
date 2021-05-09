@@ -1,12 +1,12 @@
 <ul nz-menu nzMode="inline" class="sider-menu">
   <li nz-menu-item (click)="navigateToAllDisciplines()">All disciplines</li>
-<!--  <li nz-submenu nzOpen nzTitle="My disciplines">-->
-<!--    <ul>-->
-<!--      <li *ngFor="let discipline of disciplines" nz-menu-item (click)="navigateToDiscipline(discipline)">-->
-<!--        {{discipline.name}}-->
-<!--      </li>-->
-<!--    </ul>-->
-<!--  </li>-->
+  <li nz-submenu nzOpen nzTitle="My disciplines">
+    <ul>
+      <li *ngFor="let discipline of disciplines" nz-menu-item (click)="navigateToDiscipline(discipline)">
+        {{discipline.name}}
+      </li>
+    </ul>
+  </li>
 <!--  <li nz-submenu nzTitle="User settings">-->
 <!--    <ul>-->
 <!--      <li nz-menu-item>-->
