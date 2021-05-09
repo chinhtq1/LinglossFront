@@ -1,19 +1,26 @@
-.logo {
-  float: left;
-  outline: none;
-  h1 {
-    color: #91d5ff;
-  }
-  :hover {
-    cursor: pointer;
+.header {
+  display: flex;
+  justify-content: space-between;
+
+  .logo {
+    float: left;
+    outline: none;
+
+    h1 {
+      color: #91d5ff;
+    }
+
+    :hover {
+      cursor: pointer;
+    }
   }
 }
 
-.header-menu {
-  line-height: 64px;
-  float: right;
-}
-
-li {
-  font-size: large;
-}
+//.header-menu {
+//  line-height: 64px;
+//  float: right;
+//}
+//
+//li {
+//  font-size: large;
+//}

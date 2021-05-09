@@ -11,7 +11,7 @@ export class MainComponent implements OnInit {
   descriptionPoints: string[];
 
   ngOnInit(): void {
-    this.description = 'Lingloss is a web service for working with linguistic terminology. This service can be used as:';
+    this.description = 'Lingloss is a web service exploration of linguistic terminology. This service can be used as:';
     this.descriptionPoints = ['an educational assistant for students, ',
       'a trainer for translators, ', 'a reference book for anyone interested in linguistic terminology,',
       'and other. '];

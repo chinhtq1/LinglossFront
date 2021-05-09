@@ -1,25 +1,29 @@
-import {Component, HostListener} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'Lingloss';
-  collapsed = true;
-  mobile: boolean;
+  collapsed = false;
+  mobile = false;
 
   @HostListener('window:resize', ['$event'])
   onResize(event): void {
-    this.mobile = window.innerWidth < 600;
+    this.mobile = this.collapsed = window.innerWidth < 600;
+    this.collapsed = !this.mobile;
   }
 
-  closeSider(event): void {
+  changeSiderStatus(event): void {
     this.collapsed = event;
   }
 
-  constructor() {
+  ngOnInit(): void {
     this.mobile = window.innerWidth < 600;
+  }
+
+  constructor() {
   }
 }
