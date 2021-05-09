@@ -1,9 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import { LocalStorageService } from '../../services/local-storage.service';
-import { User } from '../../models/user';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,11 +10,13 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   validateForm!: FormGroup;
+  error = '';
+  @Output()
+  closeModal: EventEmitter<void> = new EventEmitter();
 
   constructor(private fb: FormBuilder,
               private userService: UserService,
-              private lss: LocalStorageService,
-              private router: Router) {
+              private lss: LocalStorageService) {
   }
 
   ngOnInit(): void {
@@ -28,18 +28,12 @@ export class LoginComponent implements OnInit {
   }
 
   submitForm(): void {
-    let user = {} as User;
-    this.userService.login(this.validateForm.controls.email.value, this.validateForm.controls.password.value).subscribe(result => {
-      user = result;
-      if (result._id) {
+    this.userService.login(this.validateForm.controls.email.value, this.validateForm.controls.password.value).subscribe(user => {
+      if (user && user.id) {
         this.lss.setUser(user);
-        if (result.role === 'STUDENT') {
-          this.router.navigate(['/start']);
-        } else if (result.role === 'TEACHER') {
-          this.router.navigate(['/start']);
-        }
+        this.closeModal.emit();
       } else {
-        alert('unauthorized');
+        this.error = 'Wrong credentials. Please, try again.';
       }
     });
   }

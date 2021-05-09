@@ -1,7 +1,7 @@
 import { Language } from './language';
 
 export interface User {
-  _id: string;
+  id: string;
   name: string;
   surname: string;
   email: string;

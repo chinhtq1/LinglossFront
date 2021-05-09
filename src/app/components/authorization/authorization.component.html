@@ -10,7 +10,9 @@
   <div *nzModalContent>
     <nz-tabset>
       <nz-tab nzTitle="Login">
-        <app-login></app-login>
+        <app-login
+          (closeModal)="this.login()">
+        </app-login>
       </nz-tab>
       <nz-tab nzTitle="Registration">
         <app-registration></app-registration>

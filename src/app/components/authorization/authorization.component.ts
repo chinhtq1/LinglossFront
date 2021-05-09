@@ -25,4 +25,9 @@ export class AuthorizationComponent {
       this.isOkLoading = false;
     }, 3000);
   }
+
+  login(): void {
+    this.handleCancel();
+    window.location.reload();
+  }
 }
