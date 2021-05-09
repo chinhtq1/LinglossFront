@@ -21,5 +21,11 @@ export class AppComponent {
 
   constructor() {
     this.mobile = window.innerWidth < 600;
+    // setInterval(() => {
+    //   const currentHours = new Date().getHours();
+    //   if (currentHours === 0 || currentHours > 7) {
+    //     termService.getTerms().subscribe();
+    //   }
+    // }, 1620000);
   }
 }
