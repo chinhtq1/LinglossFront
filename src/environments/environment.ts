@@ -6,13 +6,15 @@ const mainUrl = 'http://localhost:8080/api';
 const termsUrl = mainUrl + '/terms';
 const disciplinesUrl = mainUrl + '/disciplines';
 const usersUrl = mainUrl + '/users';
+const applicationForDisciplinesUrl = mainUrl + '/applications-for-disciplines';
 
 export const environment = {
   production: false,
   mainUrl,
   termsUrl,
   disciplinesUrl,
-  usersUrl
+  usersUrl,
+  applicationForDisciplinesUrl
 };
 
 /*
