@@ -7,6 +7,7 @@ import { PreferencesComponent } from './components/preferences/preferences.compo
 import { AboutComponent } from './components/about/about.component';
 import {TermComponent} from './components/term/term.component';
 import {NotFoundComponent} from './components/not-found/not-found.component';
+import {TermFormComponent} from './components/term-form/term-form.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'start', pathMatch: 'full'},
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: 'disciplines', component: DisciplinesComponent},
   {path: 'preferences', component: PreferencesComponent},
   {path: 'about', component: AboutComponent},
+  {path: 'new-term', component: TermFormComponent},
   {path: '404', component: NotFoundComponent},
   {path: '**', redirectTo: '/404'}
 ];

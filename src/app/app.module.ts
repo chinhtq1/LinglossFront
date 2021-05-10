@@ -36,7 +36,6 @@ import { SiderComponent } from './components/sider/sider.component';
 import { MainComponent } from './components/main/main.component';
 import { AlphabeticalListComponent } from './components/alphabetical-list/alphabetical-list.component';
 import { NetworkComponent } from './components/network/network.component';
-import { AddTermComponent } from './components/add-term/add-term.component';
 import { TermService } from './services/term.service';
 import { DisciplinesComponent } from './components/disciplines/disciplines.component';
 import { NzListModule } from 'ng-zorro-antd/list';
@@ -45,11 +44,12 @@ import { NzMessageModule } from 'ng-zorro-antd/message';
 import { PreferencesComponent } from './components/preferences/preferences.component';
 import { AboutComponent } from './components/about/about.component';
 import { TermComponent } from './components/term/term.component';
-import {NgxGraphModule} from "@swimlane/ngx-graph";
+import {NgxGraphModule} from '@swimlane/ngx-graph';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { SearchDisciplineComponent } from './components/search-discipline/search-discipline.component';
+import { TermFormComponent } from './components/term-form/term-form.component';
 
 registerLocaleData(ru);
 
@@ -68,13 +68,13 @@ registerLocaleData(ru);
     MainComponent,
     AlphabeticalListComponent,
     NetworkComponent,
-    AddTermComponent,
     DisciplinesComponent,
     PreferencesComponent,
     AboutComponent,
     TermComponent,
     NotFoundComponent,
-    SearchDisciplineComponent
+    SearchDisciplineComponent,
+    TermFormComponent
   ],
   imports: [
     BrowserModule,

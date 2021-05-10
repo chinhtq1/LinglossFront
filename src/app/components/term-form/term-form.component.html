@@ -1,0 +1,59 @@
+<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+  <nz-form-item *ngIf="!term.name">
+    <nz-form-label>Name</nz-form-label>
+    <nz-form-control nzErrorTip="Please input the value.">
+      <input
+        class="term-input"
+        nz-input
+        placeholder="Please input the name"
+        [attr.id]="9999"
+        [formControlName]="'nameControl'"
+      />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label>Definition</nz-form-label>
+    <nz-form-control nzErrorTip="Please input the value.">
+      <textarea nz-input
+                placeholder="Please fill the definition"
+                [nzAutosize]="{ minRows: 3, maxRows: 7 }"
+                [attr.id]="0"
+                [formControlName]="'definitionControl'"></textarea>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item *ngFor="let control of listOfControl">
+    <nz-form-control nzErrorTip="Please input the value or delete this field.">
+      <input
+        class="term-input"
+        nz-input
+        placeholder="Attribute name"
+        [attr.id]="control.id"
+        [formControlName]="control.controlInstance"
+      />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control *ngFor="let vcontrol of listOfValueControl">
+      <textarea nz-input
+                placeholder="Please input the value"
+                [nzAutosize]="{ minRows: 3, maxRows: 7 }"
+                [attr.id]="vcontrol.id"
+                [formControlName]="vcontrol.controlInstance">
+      </textarea>
+      <i nz-icon nzType="minus-circle-o" class="dynamic-delete-button" (click)="removeField(vcontrol, $event)"></i>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control>
+      <button nz-button nzType="dashed" class="add-button" (click)="addField($event)">
+        <i nz-icon nzType="plus"></i>
+        Add field
+      </button>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control>
+      <button nz-button nzType="primary" [disabled]="validateForm.invalid || validateForm.pristine">Submit</button>
+    </nz-form-control>
+  </nz-form-item>
+</form>

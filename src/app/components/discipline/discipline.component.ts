@@ -36,18 +36,18 @@ export class DisciplineComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.user = this.lss.getUser();
+    this.user = !!this.lss.getUser() ? this.lss.getUser() : this.user;
     this.discipline.name = this.route.snapshot.paramMap.get('name');
     this.disciplineService.getDisciplineByName(this.discipline.name).subscribe(discipline => {
       this.discipline = discipline;
-      if (this.user.disciplines.length) {
+      if (this.user.disciplines && this.user.disciplines.length) {
         this.isMyDiscipline = !!this.user.disciplines.filter(d => d === this.discipline.id).length;
       }
     });
   }
 
   sendApplicationForTheDiscipline(discipline: Discipline): void {
-    if (this.user && this.user.disciplines.length) {
+    if (this.user && this.user.disciplines) {
       const application = {
         student: this.user.id,
         discipline: discipline.id

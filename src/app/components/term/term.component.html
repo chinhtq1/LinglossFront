@@ -1,10 +1,10 @@
 <div class="bordered">
   <h2>{{term.name}}</h2>
   <h3>{{term.definition}}</h3>
-  <nz-list nzSplit>
+  <nz-list *ngIf="term.attributes.length > 0" nzSplit>
     <nz-list-item *ngFor="let attribute of term.attributes">
-      <div style="font-weight: bold">{{attribute[0][0]}}:</div>
-      <div>{{attribute[0][1]}}</div>
+      <div style="font-weight: bold">{{attribute.attribute}}:</div>
+      <div>{{attribute.value}}</div>
     </nz-list-item>
   </nz-list>
 </div>
@@ -14,3 +14,11 @@
 <ng-template #mobileNetwork>
   <button nz-button nzType="default">Explore the network</button>
 </ng-template>
+<button nz-button *ngIf="user.role && user.role === 'STUDENT'; else authText" (click)="editTheTerm()">Edit the term</button>
+<ng-template #authText>
+  <p>Please authorize to edit the term</p>
+</ng-template>
+<app-term-form *ngIf="termIsEditable"
+               [term]="term"
+               (closeEditionComponent)="closeEditionComponent()">
+</app-term-form>

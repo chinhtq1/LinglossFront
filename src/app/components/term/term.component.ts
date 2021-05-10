@@ -2,6 +2,10 @@ import {Component, HostListener, OnInit} from '@angular/core';
 import {Term} from '../../models/term';
 import {TermService} from '../../services/term.service';
 import {PRIMARY_OUTLET, Router, UrlSegment, UrlSegmentGroup, UrlTree} from '@angular/router';
+import {User} from "../../models/user";
+import {LocalStorageService} from "../../services/local-storage.service";
+import {FormBuilder} from "@angular/forms";
+import {NzMessageService} from "ng-zorro-antd/message";
 
 @Component({
   selector: 'app-term',
@@ -12,6 +16,8 @@ export class TermComponent {
 
   term: Term = {attributes: []} as Term;
   mobile: boolean;
+  termIsEditable: boolean;
+  user: User = {} as User;
 
   @HostListener('window:resize', ['$event'])
   onResize(event): void {
@@ -19,8 +25,12 @@ export class TermComponent {
   }
 
   constructor(private termService: TermService,
-              private router: Router) {
+              private lss: LocalStorageService,
+              private router: Router,
+              public msg: NzMessageService) {
     this.mobile = window.innerWidth < 600;
+    this.termIsEditable = false;
+    this.user = !!this.lss.getUser() ? this.lss.getUser() : this.user;
 
     const tree: UrlTree = this.router.parseUrl(this.router.url);
     const g: UrlSegmentGroup = tree.root.children[PRIMARY_OUTLET];
@@ -35,12 +45,21 @@ export class TermComponent {
         this.term.name = term.name;
         this.term.discipline = term.discipline;
         this.term.definition = term.definition;
-        if (term.attributes) {
+        if (term.attributes && term.attributes.length > 0) {
           term.attributes.forEach(a => {
-            this.term.attributes.push(Object.entries(a)); // TODO refactor
+            this.term.attributes.push(a);
           });
         }
       }
     );
+  }
+
+  editTheTerm(): void {
+    this.termIsEditable = true;
+  }
+
+  closeEditionComponent(): void {
+    this.termIsEditable = false;
+    // this.msg.success('You application has been sent!');
   }
 }

@@ -11,14 +11,14 @@ import {User} from '../../models/user';
 export class DisciplinesComponent implements OnInit {
   loading = false;
   disciplines: Discipline[] = [];
-  user: User = {} as User;
+  user: User = {disciplines: []} as User;
 
   constructor(private disciplineService: DisciplineService,
               private lss: LocalStorageService) {
   }
 
   ngOnInit(): void {
-    this.user = this.lss.getUser();
+    this.user = !!this.lss.getUser() ? this.lss.getUser() : this.user;
     this.disciplineService.getDisciplines().subscribe(data => {
       this.disciplines = data;
     });

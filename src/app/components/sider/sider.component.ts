@@ -26,8 +26,8 @@ export class SiderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.user = this.lss.getUser();
-    if (this.user && this.user.disciplines) {
+    this.user = !!this.lss.getUser() ? this.lss.getUser() : this.user;
+    if (this.user && this.user.disciplines && this.user.disciplines.length) {
       this.user.disciplines.forEach(disciplineId => {
         this.disciplineService.getDiscipline(disciplineId).subscribe(discipline => {
             this.disciplines.push(discipline);

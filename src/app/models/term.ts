@@ -3,5 +3,6 @@ export interface Term {
   name: string;
   discipline: string;
   definition: string;
-  attributes?: any[];
+  attributes?: {attribute: string, value: string}[];
+  applicationMode?: boolean;
 }

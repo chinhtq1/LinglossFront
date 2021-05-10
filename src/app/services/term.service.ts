@@ -16,7 +16,7 @@ export class TermService {
     return this.http.get<Term[]>(this.termsUrl + '/find-all-terms');
   }
 
-  getTerm(id: number): Observable<Term> {
+  getTerm(id: string): Observable<Term> {
     return this.http.get<Term>(this.termsUrl + '/find-all-terms/' + id);
   }
 
@@ -25,6 +25,9 @@ export class TermService {
   }
 
   sendTerm(term: Term): Observable<Term> {
+    if (!term.applicationMode) {
+      term.applicationMode = false;
+    }
     return this.http.post<Term>(this.termsUrl + '/add-term', term);
   }
 
