@@ -7,6 +7,7 @@ import {NzMessageService} from 'ng-zorro-antd/message';
 import {LocalStorageService} from '../../services/local-storage.service';
 import {User} from '../../models/user';
 import {ApplicationForDisciplineService} from '../../services/application-for-discipline.service';
+import {UserService} from "../../services/user.service";
 
 @Component({
   selector: 'app-discipline',
@@ -29,7 +30,8 @@ export class DisciplineComponent implements OnInit {
               private disciplineService: DisciplineService,
               public msg: NzMessageService,
               private lss: LocalStorageService,
-              private applicationForDisciplineService: ApplicationForDisciplineService) {
+              private applicationForDisciplineService: ApplicationForDisciplineService,
+              private userService: UserService) {
     this.mobile = window.innerWidth < 600;
   }
 
@@ -58,5 +60,13 @@ export class DisciplineComponent implements OnInit {
     } else {
       this.msg.error('You need to authorize');
     }
+  }
+
+  deleteTheDiscipline(discipline: Discipline): void {
+    this.user.disciplines = this.user.disciplines.filter(id => id !== this.discipline.id);
+    this.userService.sendUser(this.user).subscribe(() => {
+      this.lss.setUser(this.user);
+      window.location.reload();
+    });
   }
 }
