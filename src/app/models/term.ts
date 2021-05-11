@@ -5,4 +5,5 @@ export interface Term {
   definition: string;
   attributes?: {attribute: string, value: string}[];
   applicationMode?: boolean;
+  subjectArea?: {area: string, termDefinition: string}[];
 }

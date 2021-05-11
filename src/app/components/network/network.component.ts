@@ -18,24 +18,13 @@ export class NetworkComponent implements OnInit {
   links: NetworkLink[] = [];
   nodes: NetworkNode[] = [];
 
-  constructor(private termService: TermService,
-              private router: Router) {
-  }
-
   ngOnInit(): void {
-    this.termService.getNetwork(this.term.name).subscribe(terms => {
-      terms.forEach((term, index) => {
-        this.nodes.push({id: term.id, label: term.discipline});
-        if (this.term.id !== term.id) {
-          this.links.push({id: index.toString(), source: this.term.id, target: term.id});
-        }
+    this.nodes.push({id: 'TERM', label: this.term.name});
+    if (this.term.subjectArea && this.term.subjectArea.length > 0) {
+      this.term.subjectArea.forEach((area, index) => {
+        this.nodes.push({id: index.toString(), label: area.area});
+        this.links.push({id: index.toString() + 'LINK', source: 'TERM', target: index.toString()});
       });
-    });
-  }
-
-  navigateToTheTerm(node): void {
-    this.termService.getTerm(node.id).subscribe(term => {
-      this.router.navigate(['disciplines/' + term.discipline + '/' + term.name]);
-    });
+    }
   }
 }

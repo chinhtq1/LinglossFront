@@ -14,7 +14,7 @@ import {NzMessageService} from "ng-zorro-antd/message";
 })
 export class TermComponent {
 
-  term: Term = {attributes: []} as Term;
+  term: Term = {attributes: [], subjectArea: []} as Term;
   mobile: boolean;
   termIsEditable: boolean;
   user: User = {} as User;
@@ -45,6 +45,11 @@ export class TermComponent {
         this.term.name = term.name;
         this.term.discipline = term.discipline;
         this.term.definition = term.definition;
+        if (term.subjectArea && term.subjectArea.length > 0) {
+          term.subjectArea.forEach(a => {
+            this.term.subjectArea.push(a);
+          });
+        }
         if (term.attributes && term.attributes.length > 0) {
           term.attributes.forEach(a => {
             this.term.attributes.push(a);

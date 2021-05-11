@@ -8,12 +8,14 @@
     </nz-list-item>
   </nz-list>
 </div>
-<div *ngIf="!mobile; else mobileNetwork" style="height: 50%" class="bordered">
-  <app-network [term]="term"></app-network>
+<div *ngIf="term.subjectArea && term.subjectArea.length >0">
+  <div *ngIf="!mobile; else mobileNetwork" style="height: 50%" class="bordered">
+    <app-network [term]="term"></app-network>
+  </div>
+  <ng-template #mobileNetwork>
+    <button nz-button nzType="default">Explore the network</button>
+  </ng-template>
 </div>
-<ng-template #mobileNetwork>
-  <button nz-button nzType="default">Explore the network</button>
-</ng-template>
 <button nz-button *ngIf="user.role && user.role === 'STUDENT'; else authText" (click)="editTheTerm()">Edit the term</button>
 <ng-template #authText>
   <p>Please authorize to edit the term</p>
