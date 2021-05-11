@@ -10,7 +10,7 @@ import {PRIMARY_OUTLET, Router, UrlSegment, UrlSegmentGroup, UrlTree} from '@ang
 })
 export class TermComponent {
 
-  term: Term = {attributes: []} as Term;
+  term: Term = {attributes: [], subjectArea: []} as Term;
   mobile: boolean;
 
   @HostListener('window:resize', ['$event'])
@@ -31,16 +31,22 @@ export class TermComponent {
     this.term.name = name;
 
     this.termService.getTermByNameAndDiscipline(name, discipline).subscribe(term => {
-        this.term.id = term.id;
-        this.term.name = term.name;
-        this.term.discipline = term.discipline;
-        this.term.definition = term.definition;
+      this.term.id = term.id;
+      this.term.name = term.name;
+      this.term.discipline = term.discipline;
+      this.term.definition = term.definition;
+      if (term.subjectArea && term.subjectArea.length > 0) {
+        term.subjectArea.forEach(a => {
+          this.term.subjectArea.push(a);
+        });
+      }
+      if (term.attributes && term.attributes.length > 0) {
         if (term.attributes) {
           term.attributes.forEach(a => {
-            this.term.attributes.push(Object.entries(a)); // TODO refactor
+            this.term.attributes.push(a);
           });
         }
       }
-    );
+    });
   }
 }
