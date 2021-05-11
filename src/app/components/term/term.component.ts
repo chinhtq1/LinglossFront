@@ -4,7 +4,6 @@ import {TermService} from '../../services/term.service';
 import {PRIMARY_OUTLET, Router, UrlSegment, UrlSegmentGroup, UrlTree} from '@angular/router';
 import {User} from "../../models/user";
 import {LocalStorageService} from "../../services/local-storage.service";
-import {FormBuilder} from "@angular/forms";
 import {NzMessageService} from "ng-zorro-antd/message";
 
 @Component({
@@ -26,8 +25,7 @@ export class TermComponent {
 
   constructor(private termService: TermService,
               private lss: LocalStorageService,
-              private router: Router,
-              public msg: NzMessageService) {
+              private router: Router) {
     this.mobile = window.innerWidth < 600;
     this.termIsEditable = false;
     this.user = !!this.lss.getUser() ? this.lss.getUser() : this.user;
@@ -61,10 +59,5 @@ export class TermComponent {
 
   editTheTerm(): void {
     this.termIsEditable = true;
-  }
-
-  closeEditionComponent(): void {
-    this.termIsEditable = false;
-    // this.msg.success('You application has been sent!');
   }
 }

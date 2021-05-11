@@ -17,7 +17,7 @@ const routes: Routes = [
   {path: 'disciplines', component: DisciplinesComponent},
   {path: 'preferences', component: PreferencesComponent},
   {path: 'about', component: AboutComponent},
-  {path: 'new-term', component: TermFormComponent},
+  {path: 'new-term/:discipline', component: TermFormComponent},
   {path: '404', component: NotFoundComponent},
   {path: '**', redirectTo: '/404'}
 ];

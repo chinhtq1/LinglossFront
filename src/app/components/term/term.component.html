@@ -1,26 +1,28 @@
-<div class="bordered">
-  <h2>{{term.name}}</h2>
-  <h3>{{term.definition}}</h3>
-  <nz-list *ngIf="term.attributes.length > 0" nzSplit>
-    <nz-list-item *ngFor="let attribute of term.attributes">
-      <div style="font-weight: bold">{{attribute.attribute}}:</div>
-      <div>{{attribute.value}}</div>
-    </nz-list-item>
-  </nz-list>
-</div>
-<div *ngIf="term.subjectArea && term.subjectArea.length >0">
-  <div *ngIf="!mobile; else mobileNetwork" style="height: 50%" class="bordered">
-    <app-network [term]="term"></app-network>
+<div *ngIf="!termIsEditable">
+  <div class="bordered">
+    <h2>{{term.name}}</h2>
+    <h3>{{term.definition}}</h3>
+    <nz-list *ngIf="term.attributes.length > 0" nzSplit>
+      <nz-list-item *ngFor="let attribute of term.attributes">
+        <div style="font-weight: bold">{{attribute.attribute}}:</div>
+        <div>{{attribute.value}}</div>
+      </nz-list-item>
+    </nz-list>
   </div>
-  <ng-template #mobileNetwork>
-    <button nz-button nzType="default">Explore the network</button>
+  <div *ngIf="term.subjectArea && term.subjectArea.length >0">
+    <div *ngIf="!mobile; else mobileNetwork" style="height: 50%" class="bordered">
+      <app-network [term]="term"></app-network>
+    </div>
+    <ng-template #mobileNetwork>
+      <button nz-button nzType="default">Explore the network</button>
+    </ng-template>
+  </div>
+  <button nz-button *ngIf="user.role && user.role === 'STUDENT'; else authText" (click)="editTheTerm()">Edit the term
+  </button>
+  <ng-template #authText>
+    <p>Please authorize to edit the term</p>
   </ng-template>
 </div>
-<button nz-button *ngIf="user.role && user.role === 'STUDENT'; else authText" (click)="editTheTerm()">Edit the term</button>
-<ng-template #authText>
-  <p>Please authorize to edit the term</p>
-</ng-template>
 <app-term-form *ngIf="termIsEditable"
-               [term]="term"
-               (closeEditionComponent)="closeEditionComponent()">
+               [term]="term">
 </app-term-form>

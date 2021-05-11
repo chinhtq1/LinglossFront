@@ -1,9 +1,10 @@
-import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {TermService} from '../../services/term.service';
 import {Term} from '../../models/term';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, PRIMARY_OUTLET, Router, UrlSegment, UrlSegmentGroup, UrlTree} from '@angular/router';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {NzMessageService} from 'ng-zorro-antd/message';
+import {timer} from 'rxjs';
 
 @Component({
   selector: 'app-term-form',
@@ -15,9 +16,6 @@ export class TermFormComponent implements OnInit {
   @Input()
   term: Term = {attributes: []} as Term;
 
-  @Output()
-  closeEditionComponent: EventEmitter<boolean> = new EventEmitter<boolean>();
-
   validateForm!: FormGroup;
   listOfControl: Array<{ id: number; controlInstance: string }> = [];
   listOfValueControl: Array<{ id: number; controlInstance: string }> = [];
@@ -25,7 +23,8 @@ export class TermFormComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private termService: TermService,
               private fb: FormBuilder,
-              public msg: NzMessageService) {
+              public msg: NzMessageService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -83,6 +82,12 @@ export class TermFormComponent implements OnInit {
       this.term.name = this.validateForm.controls[`nameControl`].value;
     }
     this.term.definition = this.validateForm.controls[`definitionControl`].value;
+    if (!this.term.discipline) {
+      const tree: UrlTree = this.router.parseUrl(this.router.url);
+      const g: UrlSegmentGroup = tree.root.children[PRIMARY_OUTLET];
+      const s: UrlSegment[] = g.segments;
+      this.term.discipline = s[1].path;
+    }
     if (this.term.attributes) {
       this.term.attributes.length = 0;
     }
@@ -97,13 +102,12 @@ export class TermFormComponent implements OnInit {
     this.term.id = null;
     this.term.applicationMode = true;
     this.termService.sendTerm(this.term).subscribe(() => {
-      this.closeEditionComponent.emit(true);
-      if (window.location.href !== 'http://localhost:4200/new-term' && window.location.href !== 'https://lingloss.netlify.app/new-term') {
-        window.location.reload();
-      } else {
-        // this.msg.success('You application has been sent!');
+      this.msg.success('You application has been sent!');
+      this.term = {attributes: []} as Term;
+      timer(3500).subscribe(() => {
         this.term = {attributes: []} as Term;
-      }
+        this.router.navigate(['start']);
+      });
     });
   }
 }
