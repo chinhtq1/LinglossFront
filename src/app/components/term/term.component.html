@@ -17,12 +17,12 @@
       <button nz-button nzType="default">Explore the network</button>
     </ng-template>
   </div>
-  <button nz-button *ngIf="user.role && user.role === 'STUDENT'; else authText" (click)="editTheTerm()">Edit the term
+  <button nz-button *ngIf="user.role && user.role === 'STUDENT' && isMyDiscipline; else authText" (click)="editTheTerm()">Edit the term
   </button>
   <ng-template #authText>
-    <p>Please authorize to edit the term</p>
+    <p>Please apply for the discipline to edit the term. Only authorized students can be accepted.</p>
   </ng-template>
 </div>
-<app-term-form *ngIf="termIsEditable"
+<app-term-form *ngIf="termIsEditable && isMyDiscipline"
                [term]="term">
 </app-term-form>

@@ -13,7 +13,7 @@
     </nz-tab>
   </nz-tabset>
 </div>
-<button nz-button *ngIf="user && user.role === 'STUDENT'" routerLink="/new-term/{{discipline.name}}">Add term</button>
+<button nz-button *ngIf="user && user.role === 'STUDENT' && isMyDiscipline" routerLink="/new-term/{{discipline.name}}">Add term</button>
 <ng-template #mobileContainer>
   <ul nz-menu [nzMode]="'inline'" style="border: none">
     <li nz-submenu nzTitle="Search in bar">

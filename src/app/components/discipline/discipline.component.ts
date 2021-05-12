@@ -7,7 +7,7 @@ import {NzMessageService} from 'ng-zorro-antd/message';
 import {LocalStorageService} from '../../services/local-storage.service';
 import {User} from '../../models/user';
 import {ApplicationForDisciplineService} from '../../services/application-for-discipline.service';
-import {UserService} from "../../services/user.service";
+import {UserService} from '../../services/user.service';
 
 @Component({
   selector: 'app-discipline',
