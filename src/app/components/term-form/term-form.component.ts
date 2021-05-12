@@ -78,36 +78,38 @@ export class TermFormComponent implements OnInit {
       this.validateForm.controls[i].markAsDirty();
       this.validateForm.controls[i].updateValueAndValidity();
     }
-    if (this.validateForm.controls[`nameControl`]) {
-      this.term.name = this.validateForm.controls[`nameControl`].value;
-    }
-    this.term.definition = this.validateForm.controls[`definitionControl`].value;
-    if (!this.term.discipline) {
-      const tree: UrlTree = this.router.parseUrl(this.router.url);
-      const g: UrlSegmentGroup = tree.root.children[PRIMARY_OUTLET];
-      const s: UrlSegment[] = g.segments;
-      this.term.discipline = s[1].path;
-    }
-    if (this.term.attributes) {
-      this.term.attributes.length = 0;
-    }
-    if (this.listOfControl.length > 0) {
-      this.listOfControl.forEach((control, index) => {
-        this.term.attributes.push({
-          attribute: this.validateForm.controls[this.listOfControl[index].controlInstance].value,
-          value: this.validateForm.controls[this.listOfValueControl[index].controlInstance].value
+    if (this.validateForm.valid) {
+      if (this.validateForm.controls[`nameControl`]) {
+        this.term.name = this.validateForm.controls[`nameControl`].value;
+      }
+      this.term.definition = this.validateForm.controls[`definitionControl`].value;
+      if (!this.term.discipline) {
+        const tree: UrlTree = this.router.parseUrl(this.router.url);
+        const g: UrlSegmentGroup = tree.root.children[PRIMARY_OUTLET];
+        const s: UrlSegment[] = g.segments;
+        this.term.discipline = s[1].path;
+      }
+      if (this.term.attributes) {
+        this.term.attributes.length = 0;
+      }
+      if (this.listOfControl.length > 0) {
+        this.listOfControl.forEach((control, index) => {
+          this.term.attributes.push({
+            attribute: this.validateForm.controls[this.listOfControl[index].controlInstance].value,
+            value: this.validateForm.controls[this.listOfValueControl[index].controlInstance].value
+          });
+        });
+      }
+      this.term.id = null;
+      this.term.applicationMode = true;
+      this.termService.sendTerm(this.term).subscribe(() => {
+        this.msg.success('You application has been sent!');
+        this.term = {attributes: []} as Term;
+        timer(3500).subscribe(() => {
+          this.term = {attributes: []} as Term;
+          this.router.navigate(['start']);
         });
       });
     }
-    this.term.id = null;
-    this.term.applicationMode = true;
-    this.termService.sendTerm(this.term).subscribe(() => {
-      this.msg.success('You application has been sent!');
-      this.term = {attributes: []} as Term;
-      timer(3500).subscribe(() => {
-        this.term = {attributes: []} as Term;
-        this.router.navigate(['start']);
-      });
-    });
   }
 }
