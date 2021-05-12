@@ -64,7 +64,7 @@ export class DisciplineComponent implements OnInit {
 
   deleteTheDiscipline(discipline: Discipline): void {
     this.user.disciplines = this.user.disciplines.filter(id => id !== this.discipline.id);
-    this.userService.sendUser(this.user).subscribe(() => {
+    this.userService.updateUser(this.user).subscribe(() => {
       this.lss.setUser(this.user);
       window.location.reload();
     });
