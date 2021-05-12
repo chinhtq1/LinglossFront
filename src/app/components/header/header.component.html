@@ -2,11 +2,12 @@
   <h1 routerLink="/start">Lingloss</h1>
 </div>
 <ul nz-menu nzTheme="dark" nzMode="horizontal" class="header-menu">
-  <li nz-menu-item nzSelected>
+  <li nz-menu-item nzSelected *ngIf="!user">
     <div>
       <app-authorization></app-authorization>
     </div>
   </li>
+  <li nz-menu-item nzSelected *ngIf="user" (click)="logout()">Logout</li>
   <li nz-menu-item routerLink="/preferences">Language</li>
   <li nz-menu-item routerLink="/about">About</li>
 </ul>
