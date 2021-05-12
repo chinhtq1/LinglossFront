@@ -20,7 +20,7 @@
   <button nz-button *ngIf="user.role && user.role === 'STUDENT' && isMyDiscipline; else authText" (click)="editTheTerm()">Edit the term
   </button>
   <ng-template #authText>
-    <p>Please apply for the discipline to edit the term. Only authorized students can be accepted.</p>
+    <p *ngIf="user.role !== 'TEACHER'">Please apply for the discipline to edit the term. Only authorized students can be accepted.</p>
   </ng-template>
 </div>
 <app-term-form *ngIf="termIsEditable && isMyDiscipline"

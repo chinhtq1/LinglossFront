@@ -6,4 +6,5 @@ export interface Term {
   attributes?: {attribute: string, value: string}[];
   applicationMode?: boolean;
   subjectArea?: {area: string, termDefinition: string}[];
+  userId?: string;
 }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import {User} from '../../models/user';
 import {UserService} from '../../services/user.service';
-import {LocalStorageService} from "../../services/local-storage.service";
+import {LocalStorageService} from '../../services/local-storage.service';
 
 @Component({
   selector: 'app-registration',

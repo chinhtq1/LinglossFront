@@ -5,6 +5,8 @@ import {ActivatedRoute, PRIMARY_OUTLET, Router, UrlSegment, UrlSegmentGroup, Url
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {NzMessageService} from 'ng-zorro-antd/message';
 import {timer} from 'rxjs';
+import {LocalStorageService} from "../../services/local-storage.service";
+import {User} from "../../models/user";
 
 @Component({
   selector: 'app-term-form',
@@ -19,12 +21,15 @@ export class TermFormComponent implements OnInit {
   validateForm!: FormGroup;
   listOfControl: Array<{ id: number; controlInstance: string }> = [];
   listOfValueControl: Array<{ id: number; controlInstance: string }> = [];
+  user: User;
 
   constructor(private route: ActivatedRoute,
               private termService: TermService,
               private fb: FormBuilder,
               public msg: NzMessageService,
-              private router: Router) {
+              private router: Router,
+              private lss: LocalStorageService) {
+    this.user = this.lss.getUser();
   }
 
   ngOnInit(): void {
@@ -101,9 +106,20 @@ export class TermFormComponent implements OnInit {
         });
       }
       this.term.id = null;
-      this.term.applicationMode = true;
+      if (this.user) {
+        this.term.userId = this.user.id;
+        if (this.user.role === 'STUDENT') {
+          this.term.applicationMode = true;
+        } else if (this.user.role === 'TEACHER') {
+          this.term.applicationMode = false;
+        }
+      }
       this.termService.sendTerm(this.term).subscribe(() => {
-        this.msg.success('You application has been sent!');
+        if (this.user.role === 'STUDENT') {
+          this.msg.success('You application has been sent!');
+        } else if (this.user.role === 'TEACHER') {
+          this.msg.success('Your term has been published!');
+        }
         this.term = {attributes: []} as Term;
         timer(3500).subscribe(() => {
           this.term = {attributes: []} as Term;
