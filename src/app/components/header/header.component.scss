@@ -3,7 +3,6 @@
   justify-content: space-between;
 
   .logo {
-    float: left;
     outline: none;
 
     h1 {
@@ -18,7 +17,7 @@
   .header-menu {
 
     li {
-      font-size: 18px;
+      font-size: 16px;
     }
 
     fa-icon {
@@ -27,8 +26,13 @@
   }
 }
 
-@media only screen and (max-width: 600px) {
+::ng-deep {
+  .ant-layout-header {
+    padding: 0 25px;
+  }
+}
 
+@media only screen and (max-width: 600px) {
   .header {
     .logo {
       h1 {
