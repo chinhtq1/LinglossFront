@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Discipline } from '../../models/discipline';
 import { DisciplineService } from '../../services/discipline.service';
-import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-disciplines',
@@ -12,8 +11,7 @@ export class DisciplinesComponent implements OnInit {
   loading = false;
   disciplines: Discipline[] = [];
 
-  constructor(private disciplineService: DisciplineService,
-              public msg: NzMessageService) {
+  constructor(private disciplineService: DisciplineService) {
   }
 
   ngOnInit(): void {
