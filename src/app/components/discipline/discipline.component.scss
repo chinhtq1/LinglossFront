@@ -20,11 +20,13 @@ p {
 
 @media only screen and (max-width: 600px) {
   nz-page-header {
+    padding-top: 5px;
+    padding-bottom: 5px;
     display: flex;
     justify-content: center;
   }
   p {
-    margin: 0 20px;
+    margin: 0;
   }
   ul {
     color: #1890ff;

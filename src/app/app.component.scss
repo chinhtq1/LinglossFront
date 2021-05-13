@@ -1,29 +1,36 @@
-.inner-layout {
-  padding: 24px 24px;
-}
+nz-layout {
+  min-height: 100%;
 
-nz-content {
-  background: #fff;
-  padding: 50px 24px 24px;
-  min-height: 280px;
-  text-align: center;
-}
+  .inner-layout {
+    padding: 25px;
+  }
 
-nz-footer {
-  display: flex;
-  justify-content: end;
-  align-items: center;
-  color: grey;
-  background-color: #00012b;
-  height: 40px;
-}
+  nz-content {
+    background: #fff;
+    padding: 30px;
+    min-height: 280px;
+    text-align: center;
+  }
 
-.empty-content {
-  background-color: #777777;
+  .empty-content {
+    background-color: #777777;
+  }
 }
 
 @media only screen and (max-width: 600px) {
-  nz-content {
-    padding: 22px;
+  nz-layout {
+    nz-content {
+      padding: 20px 30px;
+    }
+
+    .inner-layout {
+      padding: 10px;
+    }
+
+    ::ng-deep {
+      .ant-layout-sider-zero-width-trigger {
+        top: 30px;
+      }
+    }
   }
 }

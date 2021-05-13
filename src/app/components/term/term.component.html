@@ -1,21 +1,21 @@
-<div class="bordered">
-  <h2>{{term.name}}</h2>
-  <h3>{{term.definition}}</h3>
-  <nz-list nzSplit>
-    <nz-list-item *ngFor="let attribute of term.attributes">
-      <div style="font-weight: bold">{{attribute.attribute}}:</div>
-      <div>{{attribute.value}}</div>
-    </nz-list-item>
-  </nz-list>
-</div>
-<div *ngIf="term.subjectArea && term.subjectArea.length >0">
-  <div *ngIf="!mobile; else mobileNetwork" style="height: 50%" class="bordered">
-    <app-network [term]="term"></app-network>
+<div class="term-wrapper">
+  <div class="term-left">
+    <h1>{{term.name}}</h1>
+    <h2>{{term.definition}}</h2>
+
+    <div class="subject-area" *ngIf="term.subjectArea && term.subjectArea.length >0">
+      <app-network class="no-mobile" [term]="term"></app-network>
+      <button class="no-desktop" nz-button nzType="default">Explore the network</button>
+    </div>
+
   </div>
-  <ng-template #mobileNetwork>
-    <button nz-button nzType="default">Explore the network</button>
-  </ng-template>
+  <div class="term-right">
+    <nz-list nzSplit>
+      <nz-list-item *ngFor="let attribute of term.attributes">
+        <div class="attribute-name">{{attribute.attribute}}:</div>
+        <div class="attribute-value">{{attribute.value}}</div>
+      </nz-list-item>
+    </nz-list>
+  </div>
 </div>
-<ng-template #mobileNetwork>
-  <button nz-button nzType="default">Explore the network</button>
-</ng-template>
+

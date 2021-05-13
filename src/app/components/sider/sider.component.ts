@@ -1,6 +1,6 @@
 import {Component, Output, EventEmitter} from '@angular/core';
-import { Discipline } from '../../models/discipline';
-import { Router } from '@angular/router';
+import {Discipline} from '../../models/discipline';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-sider',

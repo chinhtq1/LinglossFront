@@ -5,7 +5,8 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-disciplines',
-  templateUrl: './disciplines.component.html'
+  templateUrl: './disciplines.component.html',
+  styleUrls: ['./disciplines.component.scss']
 })
 export class DisciplinesComponent implements OnInit {
   loading = false;

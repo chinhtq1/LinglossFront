@@ -1,19 +1,51 @@
-.logo {
-  float: left;
-  outline: none;
-  h1 {
-    color: #91d5ff;
+.header {
+  display: flex;
+  justify-content: space-between;
+
+  .logo {
+    float: left;
+    outline: none;
+
+    h1 {
+      color: #91d5ff;
+    }
+
+    :hover {
+      cursor: pointer;
+    }
   }
-  :hover {
-    cursor: pointer;
+
+  .header-menu {
+
+    li {
+      font-size: 18px;
+    }
+
+    fa-icon {
+      margin-left: 10px;
+    }
   }
 }
 
-.header-menu {
-  line-height: 64px;
-  float: right;
-}
+@media only screen and (max-width: 600px) {
 
-li {
-  font-size: large;
+  .header {
+    .logo {
+      h1 {
+        font-size: 20px;
+      }
+    }
+
+    .header-menu {
+      fa-icon {
+        margin-left: 0;
+      }
+    }
+  }
+
+  ::ng-deep {
+    .ant-layout-header {
+      padding: 0 0 0 20px;
+    }
+  }
 }
