@@ -13,8 +13,8 @@ export class SearchDisciplineComponent {
   selectedValue: Discipline = null;
   listOfOption: Discipline[] = [];
   mobile: boolean;
-  notFound = 'Discipline not found';
-  placeHolder = 'Input the discipline';
+  notFound = 'Дисциплина не найдена';
+  placeHolder = 'Введите дисциплину';
 
   @HostListener('window:resize', ['$event'])
   onResize(): void {

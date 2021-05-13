@@ -3,20 +3,20 @@
 <div class="card-container" *ngIf="!mobile; else mobileContainer">
 <!--  <app-add-term></app-add-term>-->
   <nz-tabset>
-    <nz-tab [nzTitle]="'Search in bar'">
+    <nz-tab [nzTitle]="'Поиск в строке'">
       <app-search-term [discipline]="discipline"></app-search-term>
     </nz-tab>
-    <nz-tab [nzTitle]="'Search alphabetically'">
+    <nz-tab [nzTitle]="'Поиск по алфавиту'">
       <app-alphabetical-list [discipline]="discipline"></app-alphabetical-list>
     </nz-tab>
   </nz-tabset>
 </div>
 <ng-template #mobileContainer>
   <ul nz-menu [nzMode]="'inline'" style="border: none">
-    <li nz-submenu nzTitle="Search in bar">
+    <li nz-submenu nzTitle="Поиск в строке">
       <app-search-term [discipline]="discipline"></app-search-term>
     </li>
-    <li nz-submenu nzTitle="Search alphabetically">
+    <li nz-submenu nzTitle="Поиск по алфавиту">
       <app-alphabetical-list [discipline]="discipline"></app-alphabetical-list>
     </li>
   </ul>
