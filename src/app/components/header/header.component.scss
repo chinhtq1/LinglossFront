@@ -30,6 +30,9 @@
   .ant-layout-header {
     padding: 0 25px;
   }
+  .ant-menu-item-selected{
+    background-color: transparent !important;
+  }
 }
 
 @media only screen and (max-width: 980px) {
