@@ -1,7 +1,8 @@
 <h1>Lingloss</h1>
 <div class="text-container">
-  <p>{{description}}</p>
-  <div nz-typography class="points-container">
+  <p>{{descriptionStart}}</p>
+  <p class="no-mobile">{{descriptionEnd}}</p>
+  <div nz-typography class="no-mobile points-container">
     <ul>
       <li *ngFor="let point of descriptionPoints">
         <span>{{point}}</span>
