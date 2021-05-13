@@ -1,12 +1,12 @@
 <ngx-graph
-  [showMiniMap]="true"
-  [autoCenter]="true"
-  [autoZoom]="true"
   [links]="links"
   [nodes]="nodes"
+  [showMiniMap]="true"
+  [zoomToFit$]="zoomToFit$"
+  [center$]="center$"
 >
   <ng-template #nodeTemplate let-node>
-    <svg:g class="node">
+    <svg:g class="node" (mouseenter)="showDefinition(node)" [nz-tooltip]="tooltip">
       <svg:rect
         [attr.width]="node.dimension.width"
         [attr.height]="node.dimension.height"

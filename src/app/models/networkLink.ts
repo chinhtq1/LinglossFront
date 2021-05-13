@@ -1,5 +1,5 @@
 export interface NetworkLink {
-  id: string;
+  id: number;
   source: string;
   target: string;
 }
