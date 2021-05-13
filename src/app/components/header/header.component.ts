@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {faTelegramPlane} from '@fortawesome/free-brands-svg-icons';
-import {faInfo, faGlobeAmericas} from '@fortawesome/free-solid-svg-icons';
+import {faInfo, faGlobeAmericas, faBook} from '@fortawesome/free-solid-svg-icons';
 import {faUser} from '@fortawesome/free-regular-svg-icons';
 
 @Component({
@@ -13,6 +13,7 @@ export class HeaderComponent {
   faGlobe = faGlobeAmericas;
   faInfo = faInfo;
   faUser = faUser;
+  faBook = faBook;
 
   isModalVisible = false;
 
