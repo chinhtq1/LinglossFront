@@ -18,12 +18,12 @@ export class SearchDisciplineComponent {
 
   @HostListener('window:resize', ['$event'])
   onResize(): void {
-    this.mobile = window.innerWidth < 600;
+    this.mobile = window.innerWidth < 980;
   }
 
   constructor(private disciplineService: DisciplineService,
               private router: Router) {
-    this.mobile = window.innerWidth < 600;
+    this.mobile = window.innerWidth < 980;
   }
 
   search(value: string): void {

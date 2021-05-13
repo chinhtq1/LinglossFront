@@ -1,5 +1,5 @@
 <button nz-button nzType="default" (click)="showModal()">New term</button>
-<nz-modal [(nzVisible)]="isVisible" nzTitle="Create new term" nzWidth="600px" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Create new term" nzWidth="980px" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
   <ng-container *nzModalContent>
     <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
       <nz-form-item *ngFor="let control of listOfControl; let i = index">

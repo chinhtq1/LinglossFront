@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
 
   @HostListener('window:resize', ['$event'])
   onResize(): void {
-    this.mobile = this.collapsed = window.innerWidth < 600;
+    this.mobile = this.collapsed = window.innerWidth < 980;
     this.collapsed = !this.mobile;
   }
 
@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.mobile = window.innerWidth < 600;
+    this.mobile = window.innerWidth < 980;
     // setInterval(() => {
     //   const currentHours = new Date().getHours();
     //   if (currentHours === 0 || currentHours > 7) {
