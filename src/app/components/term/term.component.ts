@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {Term} from '../../models/term';
 import {TermService} from '../../services/term.service';
 import {PRIMARY_OUTLET, Router, UrlSegment, UrlSegmentGroup, UrlTree} from '@angular/router';
@@ -11,9 +11,18 @@ import {PRIMARY_OUTLET, Router, UrlSegment, UrlSegmentGroup, UrlTree} from '@ang
 export class TermComponent {
 
   term: Term = {attributes: [], subjectArea: []} as Term;
+  mobile: boolean;
+  modalOpened: boolean;
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event): void {
+    this.mobile = window.innerWidth < 980;
+  }
 
   constructor(private termService: TermService,
               private router: Router) {
+    this.mobile = window.innerWidth < 980;
+    this.modalOpened = false;
 
     const tree: UrlTree = this.router.parseUrl(this.router.url);
     const g: UrlSegmentGroup = tree.root.children[PRIMARY_OUTLET];
@@ -41,5 +50,13 @@ export class TermComponent {
         }
       }
     });
+  }
+
+  openModal(): void {
+    this.modalOpened = true;
+  }
+
+  handleCancel(): void {
+    this.modalOpened = false;
   }
 }

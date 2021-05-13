@@ -1,9 +1,10 @@
 <ngx-graph
   [links]="links"
   [nodes]="nodes"
-  [showMiniMap]="true"
+  [showMiniMap]="showMiniMap"
   [zoomToFit$]="zoomToFit$"
   [center$]="center$"
+  [view] = "view"
 >
   <ng-template #nodeTemplate let-node>
     <svg:g class="node" (mouseenter)="showDefinition(node)" [nz-tooltip]="tooltip">

@@ -3,9 +3,9 @@
     <h1>{{term.name}}</h1>
     <h2>{{term.definition}}</h2>
 
-    <div class="subject-area" *ngIf="term.subjectArea && term.subjectArea.length >0">
+    <div class="subject-area" *ngIf="term.subjectArea && term.subjectArea.length>0">
       <app-network class="no-mobile" [term]="term"></app-network>
-      <button class="no-desktop" nz-button nzType="default">Explore the network</button>
+      <button class="no-desktop" nz-button nzType="default" (click)="openModal()">Explore the network</button>
     </div>
 
   </div>
@@ -18,4 +18,14 @@
     </nz-list>
   </div>
 </div>
+
+<nz-modal
+  [(nzVisible)]="modalOpened"
+  (nzOnCancel)="handleCancel()"
+  nzFooter="null"
+>
+  <div *nzModalContent>
+    <app-network [term]="term" [view]="[300, 400]" [showMiniMap]="false"></app-network>
+  </div>
+</nz-modal>
 
