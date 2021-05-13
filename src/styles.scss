@@ -4,10 +4,6 @@
   display: none !important;
 }
 
-.no-mobile {
-  display: block !important;
-}
-
 @media only screen and (max-width: 600px) {
   .no-desktop {
     display: block !important;
