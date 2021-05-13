@@ -51,6 +51,8 @@ import {NotFoundComponent} from './components/not-found/not-found.component';
 import {SearchDisciplineComponent} from './components/search/search-discipline.component';
 import {AnimatedBackgroundComponent} from './components/animated-background/animated-background.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import {NzToolTipModule} from "ng-zorro-antd/tooltip";
+import {NgxChartsModule} from "@swimlane/ngx-charts";
 
 registerLocaleData(ru);
 
@@ -108,7 +110,9 @@ registerLocaleData(ru);
       // Register the ServiceWorker as soon as the app is stable
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
-    })
+    }),
+    NzToolTipModule,
+    NgxChartsModule
   ],
   providers: [
     {provide: NZ_I18N, useValue: ru_RU},
