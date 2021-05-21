@@ -1,0 +1,33 @@
+<div class="search-wrapper">
+  <nz-input-group [nzSuffix]="afterInput">
+    <nz-select
+      nzShowSearch
+      nzBorderless
+      nzSize="large"
+      [nzPlaceHolder]="placeHolder"
+      [(ngModel)]="selectedValue"
+      [nzNotFoundContent]="notFound"
+      [nzShowArrow]="false"
+      [nzOptionOverflowSize]="7"
+      (nzOnSearch)="search($event)">
+      <nz-option *ngFor="let o of listOfOption" [nzLabel]="o.name + ' in ' + o.discipline" [nzValue]="o"></nz-option>
+      <ng-template #afterInput>
+        <i nz-icon class="ant-input-clear-icon" nzTheme="fill" nzType="close-circle" *ngIf="true" (click)="clear()"></i>
+        <button nz-button nzType="primary" nzSearch (click)="explore()" class="search-button">
+          <i nz-icon nzType="search"></i>
+        </button>
+      </ng-template>
+    </nz-select>
+  </nz-input-group>
+  <!--  <a nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu">-->
+  <!--    Choose the language-->
+  <!--    <i nz-icon nzType="down"></i>-->
+  <!--  </a>-->
+</div>
+<!--<nz-dropdown-menu #menu="nzDropdownMenu">-->
+<!--  <ul nz-menu>-->
+<!--    <li nz-menu-item>English</li>-->
+<!--    <li nz-menu-item>Russian</li>-->
+<!--  </ul>-->
+<!--</nz-dropdown-menu>-->
+

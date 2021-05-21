@@ -1,1 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+
+.no-desktop {
+  display: none !important;
+}
+
+.no-mobile {
+  display: block !important;
+}
+
+@media only screen and (max-width: 600px) {
+  .no-desktop {
+    display: block !important;
+  }
+
+  .no-mobile {
+    display: none !important;
+  }
+}

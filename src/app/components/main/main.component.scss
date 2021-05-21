@@ -1,21 +1,41 @@
-p, span {
-  text-align: justify;
+:host {
+  position: relative;
 }
-ul {
-  text-align: left;
-  margin-left: -10px;
+
+h1 {
+  font-size: 50px;
+  margin-bottom: 0;
 }
-div {
-  margin: 0 20px 10px;
-  text-align: center;
-}
+
 .text-container {
   display: inline-block;
   margin-top: 20px;
-  margin-bottom: -30px;
+
+  .points-container {
+    margin: 0 20px 10px;
+  }
+
+  ul {
+    text-align: left;
+    margin-left: -10px;
+  }
+
+  p, span {
+    text-align: justify;
+    font-size: 20px;
+  }
 }
 
 @media only screen and (max-width: 600px) {
+  h1 {
+    font-size: 40px;
+    margin-bottom: 20px;
+  }
+
+  p, span {
+    font-size: 16px;
+  }
+
   .text-container {
     margin: 0 30px 18px;
   }

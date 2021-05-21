@@ -1,25 +1,26 @@
-import {Component, HostListener} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'Lingloss';
   collapsed = true;
-  mobile: boolean;
+  mobile = false;
 
   @HostListener('window:resize', ['$event'])
-  onResize(event): void {
-    this.mobile = window.innerWidth < 600;
+  onResize(): void {
+    this.mobile = this.collapsed = window.innerWidth < 600;
+    this.collapsed = !this.mobile;
   }
 
-  closeSider(event): void {
+  changeSiderStatus(event): void {
     this.collapsed = event;
   }
 
-  constructor() {
+  ngOnInit(): void {
     this.mobile = window.innerWidth < 600;
     // setInterval(() => {
     //   const currentHours = new Date().getHours();
@@ -27,5 +28,8 @@ export class AppComponent {
     //     termService.getTerms().subscribe();
     //   }
     // }, 1620000);
+  }
+
+  constructor() {
   }
 }

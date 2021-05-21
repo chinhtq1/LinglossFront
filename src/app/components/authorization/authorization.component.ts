@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-authorization',
@@ -6,13 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./authorization.component.scss']
 })
 export class AuthorizationComponent {
-
+  @Input()
   isVisible = false;
-  isOkLoading = false;
 
-  showModal(): void {
-    this.isVisible = true;
-  }
+  isOkLoading = false;
 
   handleCancel(): void {
     this.isVisible = false;

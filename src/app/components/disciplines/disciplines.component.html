@@ -1,10 +1,10 @@
+<h1>Disciplines</h1>
 <div *ngIf="disciplines.length">
   <app-search-discipline></app-search-discipline>
 </div>
-<nz-page-header class="site-page-header" nzTitle="Available disciplines"></nz-page-header>
 <nz-list nzItemLayout="horizontal" nzBordered="true" nzSize="default" [nzLoading]="loading">
-  <nz-list-item *ngFor="let discipline of disciplines" style="cursor: default">
-    <nz-list-item-meta nzDescription="{{discipline.tutor}}" style="display: block">
+  <nz-list-item *ngFor="let discipline of disciplines">
+    <nz-list-item-meta nzDescription="{{discipline.tutor}}">
       <nz-list-item-meta-title>{{discipline.name}}</nz-list-item-meta-title>
     </nz-list-item-meta>
     <ul nz-list-item-actions>
@@ -12,6 +12,11 @@
         <a routerLink="/disciplines/{{discipline.name}}">View</a>
       </nz-list-item-action>
     </ul>
+    <!--    <ul nz-list-item-actions>-->
+    <!--      <nz-list-item-action>-->
+    <!--        <a (click)="msg.success('Your application for ' + discipline.name + ' has been sent.')">Add</a>-->
+    <!--      </nz-list-item-action>-->
+    <!--    </ul>-->
   </nz-list-item>
   <nz-list-empty *ngIf="disciplines.length === 0"></nz-list-empty>
 </nz-list>
