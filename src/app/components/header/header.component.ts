@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {LocalStorageService} from '../../services/local-storage.service';
 import {User} from '../../models/user';
 import {faTelegramPlane} from '@fortawesome/free-brands-svg-icons';
-import {faInfo, faGlobeAmericas} from '@fortawesome/free-solid-svg-icons';
+import {faInfo, faGlobeAmericas, faBook} from '@fortawesome/free-solid-svg-icons';
 import {faUser} from '@fortawesome/free-regular-svg-icons';
 
 @Component({
@@ -14,6 +14,7 @@ import {faUser} from '@fortawesome/free-regular-svg-icons';
   faGlobe = faGlobeAmericas;
   faInfo = faInfo;
   faUser = faUser;
+  faBook = faBook;
 
   isModalVisible = false;
 export class HeaderComponent implements OnInit {
