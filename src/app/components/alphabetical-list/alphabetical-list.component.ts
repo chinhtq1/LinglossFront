@@ -20,7 +20,7 @@ export class AlphabeticalListComponent implements OnInit {
 
   @HostListener('window:resize', ['$event'])
   onResize(event): void {
-    this.mobile = window.innerWidth < 600;
+    this.mobile = window.innerWidth < 980;
   }
 
   constructor(private router: Router,
@@ -28,7 +28,7 @@ export class AlphabeticalListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.mobile = window.innerWidth < 600;
+    this.mobile = window.innerWidth < 980;
     this.termService.getTermsByDiscipline(this.discipline.name).subscribe(terms => this.terms = terms);
   }
 

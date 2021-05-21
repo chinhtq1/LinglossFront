@@ -21,12 +21,12 @@ export class SearchTermComponent {
 
   @HostListener('window:resize', ['$event'])
   onResize(event): void {
-    this.mobile = window.innerWidth < 600;
+    this.mobile = window.innerWidth < 980;
   }
 
   constructor(private termService: TermService,
               private router: Router) {
-    this.mobile = window.innerWidth < 600;
+    this.mobile = window.innerWidth < 980;
   }
 
   search(value: string): void {
