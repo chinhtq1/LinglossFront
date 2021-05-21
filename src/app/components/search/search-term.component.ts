@@ -49,4 +49,8 @@ export class SearchTermComponent {
   explore(): void {
     this.router.navigate(['disciplines/' + this.selectedValue.discipline + '/' + this.selectedValue.name]);
   }
+
+  detectLabel(option: Term): string {
+    return option.name + ' in ' + option.discipline;
+  }
 }

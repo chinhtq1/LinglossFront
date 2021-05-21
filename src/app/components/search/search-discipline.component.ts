@@ -44,4 +44,8 @@ export class SearchDisciplineComponent {
   explore(): void {
     this.router.navigate(['disciplines/' + this.selectedValue.name]);
   }
+
+  detectLabel(option: Discipline): string {
+    return option.name;
+  }
 }
