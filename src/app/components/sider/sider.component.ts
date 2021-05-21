@@ -1,6 +1,8 @@
 import {Component, Output, EventEmitter} from '@angular/core';
 import {Discipline} from '../../models/discipline';
 import {Router} from '@angular/router';
+import { User } from '../../models/user';
+import { LocalStorageService } from '../../services/local-storage.service';
 
 @Component({
   selector: 'app-sider',
@@ -12,8 +14,12 @@ export class SiderComponent {
   @Output()
   closeSider = new EventEmitter<boolean>();
 
-  constructor(public router: Router) {
+  user: User = {} as User;
+
+  constructor(public router: Router,
+              private lss: LocalStorageService) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.user = this.lss.getUser();
   }
 
   navigateToAllDisciplines(): void {
@@ -21,7 +27,7 @@ export class SiderComponent {
     this.router.navigate(['disciplines/']);
   }
 
-  navigateToDiscipline(discipline: Discipline): void {
-    this.router.navigate(['disciplines/' + discipline.name]);
+  navigateToDiscipline(discipline: string): void {
+    this.router.navigate(['disciplines/' + discipline]).then();
   }
 }

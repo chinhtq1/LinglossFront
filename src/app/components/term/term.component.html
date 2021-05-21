@@ -17,11 +17,6 @@
       </nz-list-item>
     </nz-list>
   </div>
-  <button nz-button *ngIf="user.role && user.role === 'STUDENT' && isMyDiscipline; else authText" (click)="editTheTerm()">Edit the term
-  </button>
-  <ng-template #authText>
-    <p *ngIf="user.role !== 'TEACHER'">Please apply for the discipline to edit the term. Only authorized students can be accepted.</p>
-  </ng-template>
 </div>
 <app-term-form *ngIf="termIsEditable && isMyDiscipline"
                [term]="term">
@@ -36,4 +31,12 @@
     <app-network [term]="term" [view]="[300, 400]" [showMiniMap]="false"></app-network>
   </div>
 </nz-modal>
+
+<button nz-button *ngIf="user.role && user.role === 'STUDENT' && isMyDiscipline; else authText" (click)="editTheTerm()">
+  Редактировать термин
+</button>
+<ng-template #authText>
+  <p class="warning-text" *ngIf="user.role !== 'TEACHER'">Для редактирования термина необходимо подать заявку на доступ к дисциплине.
+    Только авторизованные пользователи могут это сделать.</p>
+</ng-template>
 

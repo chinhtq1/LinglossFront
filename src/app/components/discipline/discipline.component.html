@@ -1,7 +1,7 @@
 <nz-page-header nzTitle="{{discipline.name}}"></nz-page-header>
 <p nz-typography>{{discipline.description}}</p>
 <button nz-button *ngIf="!isMyDiscipline" (click)="sendApplicationForTheDiscipline(discipline)">Apply</button>
-<button nz-button *ngIf="isMyDiscipline" (click)="deleteTheDiscipline(discipline)">Delete</button>
+<button nz-button *ngIf="user && isMyDiscipline" routerLink="/new-term/{{discipline.name}}">Добавить термин</button>
 <div class="card-container" *ngIf="!mobile; else mobileContainer">
 <!--  <app-add-term></app-add-term>-->
   <nz-tabset>
@@ -13,7 +13,7 @@
     </nz-tab>
   </nz-tabset>
 </div>
-<button nz-button *ngIf="user && isMyDiscipline" routerLink="/new-term/{{discipline.name}}">Add term</button>
+<button nz-button *ngIf="isMyDiscipline" (click)="deleteTheDiscipline(discipline)">Покинуть дисциплину</button>
 <ng-template #mobileContainer>
   <ul nz-menu [nzMode]="'inline'" style="border: none">
     <li nz-submenu nzTitle="Поиск в строке">

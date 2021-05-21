@@ -10,15 +10,16 @@ import {faUser} from '@fortawesome/free-regular-svg-icons';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
+
+export class HeaderComponent implements OnInit {
+  user: User = null;
+  faBook = faBook;
   faTelegram = faTelegramPlane;
   faGlobe = faGlobeAmericas;
   faInfo = faInfo;
   faUser = faUser;
-  faBook = faBook;
 
   isModalVisible = false;
-export class HeaderComponent implements OnInit {
-  user: User = null;
 
   constructor(private lss: LocalStorageService) {
   }

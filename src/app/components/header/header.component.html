@@ -6,28 +6,25 @@
   </div>
   <div class="header-right">
     <ul class="header-menu" nz-menu nzTheme="dark" nzMode="horizontal">
-      <!--      <li nz-menu-item nzSelected (click)="openModal()">-->
-      <!--        <app-authorization [isVisible]="isModalVisible"></app-authorization>-->
-      <!--        <fa-icon [icon]="faUser"></fa-icon>-->
-      <!--      </li>-->
+      <li *ngIf="!user" nz-menu-item (click)="openModal()">
+        <app-authorization [isVisible]="isModalVisible"></app-authorization>
+        <fa-icon [icon]="faUser"></fa-icon>
+      </li>
+      <li nz-menu-item *ngIf="user" (click)="logout()">Выйти</li>
       <li nz-menu-item routerLink="disciplines">
-        <span class="no-mobile">Disciplines</span>
+        <span class="no-mobile">Дисциплины</span>
         <fa-icon [icon]="faBook"></fa-icon>
       </li>
       <li nz-menu-item>
-        <span class="no-mobile">Language</span>
+        <span class="no-mobile">Сменить язык</span>
         <fa-icon [icon]="faGlobe"></fa-icon>
       </li>
-<!--      <li nz-menu-item>-->
-<!--        <span class="no-mobile">Language</span>-->
-<!--        <fa-icon [icon]="faGlobe"></fa-icon>-->
-<!--      </li>-->
-      <!--      <li nz-menu-item routerLink="/about">-->
-      <!--        About-->
-      <!--        <fa-icon [icon]="faInfo"></fa-icon>-->
-      <!--      </li>-->
+      <li nz-menu-item routerLink="/about">
+        <span class="no-mobile">О сервисе</span>
+        <fa-icon [icon]="faInfo"></fa-icon>
+      </li>
       <li nz-menu-item>
-        <a href="https://t.me/khasekai">
+        <a href="https://t.me/khasekai" target="_blank">
           <span class="no-mobile">Контакты</span>
           <fa-icon [icon]="faTelegram"></fa-icon>
         </a>
@@ -35,13 +32,3 @@
     </ul>
   </div>
 </div>
-<ul nz-menu nzTheme="dark" nzMode="horizontal" class="header-menu">
-  <li nz-menu-item nzSelected *ngIf="!user">
-    <div>
-      <app-authorization></app-authorization>
-    </div>
-  </li>
-  <li nz-menu-item nzSelected *ngIf="user" (click)="logout()">Logout</li>
-  <li nz-menu-item routerLink="/preferences">Language</li>
-  <li nz-menu-item routerLink="/about">About</li>
-</ul>

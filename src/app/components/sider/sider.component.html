@@ -2,8 +2,8 @@
   <li nz-menu-item (click)="navigateToAllDisciplines()">All disciplines</li>
   <li *ngIf="user && user.disciplines" nz-submenu nzOpen nzTitle="My disciplines">
     <ul>
-      <li *ngFor="let discipline of disciplines" nz-menu-item (click)="navigateToDiscipline(discipline)">
-        {{discipline.name}}
+      <li *ngFor="let discipline of user.disciplines" nz-menu-item (click)="navigateToDiscipline(discipline)">
+        {{discipline}}
       </li>
     </ul>
   </li>

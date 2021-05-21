@@ -35,7 +35,6 @@ import {SiderComponent} from './components/sider/sider.component';
 import {MainComponent} from './components/main/main.component';
 import {AlphabeticalListComponent} from './components/alphabetical-list/alphabetical-list.component';
 import {NetworkComponent} from './components/network/network.component';
-import {AddTermComponent} from './components/add-term/add-term.component';
 import {TermService} from './services/term.service';
 import {DisciplinesComponent} from './components/disciplines/disciplines.component';
 import {NzListModule} from 'ng-zorro-antd/list';
@@ -51,8 +50,9 @@ import {NotFoundComponent} from './components/not-found/not-found.component';
 import {SearchDisciplineComponent} from './components/search/search-discipline.component';
 import {AnimatedBackgroundComponent} from './components/animated-background/animated-background.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
-import {NzToolTipModule} from "ng-zorro-antd/tooltip";
-import {NgxChartsModule} from "@swimlane/ngx-charts";
+import {NzToolTipModule} from 'ng-zorro-antd/tooltip';
+import {NgxChartsModule} from '@swimlane/ngx-charts';
+import { TermFormComponent } from './components/term-form/term-form.component';
 
 registerLocaleData(ru);
 
@@ -76,7 +76,8 @@ registerLocaleData(ru);
     TermComponent,
     NotFoundComponent,
     SearchDisciplineComponent,
-    AnimatedBackgroundComponent
+    AnimatedBackgroundComponent,
+    TermFormComponent
   ],
   imports: [
     BrowserModule,
@@ -112,7 +113,8 @@ registerLocaleData(ru);
       registrationStrategy: 'registerWhenStable:30000'
     }),
     NzToolTipModule,
-    NgxChartsModule
+    NgxChartsModule,
+    NzFormModule
   ],
   providers: [
     {provide: NZ_I18N, useValue: ru_RU},
