@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {Term} from '../../models/term';
 import {TermService} from '../../services/term.service';
 import {PRIMARY_OUTLET, Router, UrlSegment, UrlSegmentGroup, UrlTree} from '@angular/router';
@@ -14,14 +14,23 @@ import {DisciplineService} from '../../services/discipline.service';
 export class TermComponent implements OnInit {
 
   term: Term = {attributes: [], subjectArea: []} as Term;
+  mobile: boolean;
+  modalOpened: boolean;
   termIsEditable: boolean;
   user: User = {} as User;
   isMyDiscipline: boolean;
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event): void {
+    this.mobile = window.innerWidth < 980;
+  }
 
   constructor(private termService: TermService,
               private lss: LocalStorageService,
               private router: Router,
               private disciplineService: DisciplineService) {
+    this.mobile = window.innerWidth < 980;
+    this.modalOpened = false;
     this.termIsEditable = false;
     this.user = !!this.lss.getUser() ? this.lss.getUser() : this.user;
   }
@@ -55,6 +64,14 @@ export class TermComponent implements OnInit {
         }
       }
     );
+  }
+
+  openModal(): void {
+    this.modalOpened = true;
+  }
+
+  handleCancel(): void {
+    this.modalOpened = false;
   }
 
   editTheTerm(): void {

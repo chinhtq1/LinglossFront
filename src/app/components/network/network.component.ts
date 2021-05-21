@@ -14,6 +14,12 @@ export class NetworkComponent implements OnInit {
   @Input()
   term: Term;
 
+  @Input()
+  view: number[];
+
+  @Input()
+  showMiniMap: boolean = true;
+
   links: NetworkLink[] = [];
   nodes: NetworkNode[] = [];
 
