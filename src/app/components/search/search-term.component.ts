@@ -18,8 +18,8 @@ export class SearchTermComponent {
   selectedValue: Term = null;
   listOfOption: Term[] = [];
   mobile: boolean;
-  notFound = 'Term not found';
-  placeHolder = 'Input the term';
+  notFound = 'Термин не найден';
+  placeHolder = 'Введите термин';
 
   @HostListener('window:resize', ['$event'])
   onResize(): void {
@@ -51,6 +51,6 @@ export class SearchTermComponent {
   }
 
   detectLabel(option: Term): string {
-    return option.name + ' in ' + option.discipline;
+    return option.name + ' в ' + option.discipline;
   }
 }
