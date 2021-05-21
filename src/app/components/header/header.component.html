@@ -10,10 +10,13 @@
         <app-authorization [isVisible]="isModalVisible"></app-authorization>
         <fa-icon [icon]="faUser"></fa-icon>
       </li>
-      <li nz-menu-item *ngIf="user" (click)="logout()">Выйти</li>
       <li nz-menu-item routerLink="disciplines">
         <span class="no-mobile">Дисциплины</span>
         <fa-icon [icon]="faBook"></fa-icon>
+      </li>
+      <li nz-menu-item>
+        <span class="no-mobile">Заявки на дисциплины</span>
+        <fa-icon [icon]="faPlus"></fa-icon>
       </li>
       <li nz-menu-item>
         <span class="no-mobile">Сменить язык</span>
@@ -29,6 +32,9 @@
           <fa-icon [icon]="faTelegram"></fa-icon>
         </a>
       </li>
+      <li nz-menu-item *ngIf="user" (click)="logout()">
+        <span class="no-mobile">Выйти</span>
+        <fa-icon [icon]="faSignOut"></fa-icon></li>
     </ul>
   </div>
 </div>
