@@ -5,8 +5,8 @@ import {ActivatedRoute, PRIMARY_OUTLET, Router, UrlSegment, UrlSegmentGroup, Url
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {NzMessageService} from 'ng-zorro-antd/message';
 import {timer} from 'rxjs';
-import {LocalStorageService} from "../../services/local-storage.service";
-import {User} from "../../models/user";
+import {LocalStorageService} from '../../services/local-storage.service';
+import {User} from '../../models/user';
 
 @Component({
   selector: 'app-term-form',
@@ -16,7 +16,9 @@ import {User} from "../../models/user";
 export class TermFormComponent implements OnInit {
 
   @Input()
-  term: Term = {attributes: []} as Term;
+  term: Term = {definition: [], attributes: []} as Term;
+
+  termIsNew = false;
 
   validateForm!: FormGroup;
   listOfControl: Array<{ id: number; controlInstance: string }> = [];
@@ -33,11 +35,12 @@ export class TermFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.termIsNew = !(!!this.term.name);
     this.validateForm = this.fb.group({});
     if (!this.term.name) {
       this.validateForm.addControl('nameControl', new FormControl(null, Validators.required));
     }
-    this.validateForm.addControl('definitionControl', new FormControl(this.term.definition, Validators.required));
+    this.validateForm.addControl('definitionControl', new FormControl(this.term.definition[0], Validators.required));
     if (this.term.attributes.length > 0) {
       this.term.attributes.forEach(attribute => {
         this.addField(null, attribute);
@@ -87,7 +90,7 @@ export class TermFormComponent implements OnInit {
       if (this.validateForm.controls[`nameControl`]) {
         this.term.name = this.validateForm.controls[`nameControl`].value;
       }
-      this.term.definition = this.validateForm.controls[`definitionControl`].value;
+      this.term.definition[0] = this.validateForm.controls[`definitionControl`].value;
       if (!this.term.discipline) {
         const tree: UrlTree = this.router.parseUrl(this.router.url);
         const g: UrlSegmentGroup = tree.root.children[PRIMARY_OUTLET];
@@ -117,6 +120,7 @@ export class TermFormComponent implements OnInit {
       this.termService.sendTerm(this.term).subscribe(() => {
         if (this.user.role === 'STUDENT') {
           this.msg.success('You application has been sent!');
+          console.log(this.term);
         } else if (this.user.role === 'TEACHER') {
           this.msg.success('Your term has been published!');
         }

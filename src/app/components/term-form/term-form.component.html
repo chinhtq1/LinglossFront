@@ -1,59 +1,62 @@
+<h1 *ngIf="termIsNew">Создание термина</h1>
 <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
-  <nz-form-item *ngIf="!term.name">
-    <nz-form-label>Name</nz-form-label>
-    <nz-form-control nzErrorTip="Please input the value.">
+  <nz-form-item *ngIf="termIsNew">
+    <nz-form-label>Название термина</nz-form-label>
+    <nz-form-control nzErrorTip="Пожалуйста, введите название термина">
       <input
         class="term-input"
         nz-input
-        placeholder="Please input the name"
+        placeholder="Введите название"
         [attr.id]="9999"
         [formControlName]="'nameControl'"
       />
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
-    <nz-form-label>Definition</nz-form-label>
-    <nz-form-control nzErrorTip="Please input the value.">
+    <nz-form-label>Значение термина</nz-form-label>
+    <nz-form-control nzErrorTip="Пожалуйста, введите значение термина">
       <textarea nz-input
-                placeholder="Please fill the definition"
+                placeholder="Введите значение"
                 [nzAutosize]="{ minRows: 3, maxRows: 7 }"
                 [attr.id]="0"
                 [formControlName]="'definitionControl'"></textarea>
     </nz-form-control>
   </nz-form-item>
-  <nz-form-item *ngFor="let control of listOfControl">
-    <nz-form-control nzErrorTip="Please input the value or delete this field.">
+  <nz-form-item  *ngFor="let control of listOfControl">
+    <nz-form-label>Название атрибута</nz-form-label>
+    <nz-form-control class="attribute-wrapper" nzErrorTip="Пожалуйста, введите название атрибута или удалите это поле">
       <input
         class="term-input"
         nz-input
-        placeholder="Attribute name"
+        placeholder="Название атрибута"
         [attr.id]="control.id"
         [formControlName]="control.controlInstance"
       />
     </nz-form-control>
   </nz-form-item>
-  <nz-form-item>
-    <nz-form-control *ngFor="let vcontrol of listOfValueControl">
+  <nz-form-item *ngFor="let vcontrol of listOfValueControl" >
+    <nz-form-label>Значение атрибута</nz-form-label>
+    <nz-form-control class="attribute-wrapper">
       <textarea nz-input
-                placeholder="Please input the value"
+                placeholder="Значение атрибута"
                 [nzAutosize]="{ minRows: 3, maxRows: 7 }"
                 [attr.id]="vcontrol.id"
                 [formControlName]="vcontrol.controlInstance">
       </textarea>
-      <i nz-icon nzType="minus-circle-o" class="dynamic-delete-button" (click)="removeField(vcontrol, $event)"></i>
     </nz-form-control>
+    <i nz-icon nzType="minus-circle-o" class="dynamic-delete-button" (click)="removeField(vcontrol, $event)"></i>
   </nz-form-item>
   <nz-form-item>
     <nz-form-control>
       <button nz-button nzType="dashed" class="add-button" (click)="addField($event)">
         <i nz-icon nzType="plus"></i>
-        Add field
+        Добавить атрибут
       </button>
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
     <nz-form-control>
-      <button nz-button nzType="primary" [disabled]="validateForm.invalid || validateForm.pristine">Submit</button>
+      <button nz-button nzType="primary" [disabled]="validateForm.invalid || validateForm.pristine">Подтвердить</button>
     </nz-form-control>
   </nz-form-item>
 </form>
