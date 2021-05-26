@@ -44,7 +44,7 @@ export class NetworkComponent implements OnInit {
     if (node.label !== this.term.name) {
       this.tooltip = this.term.subjectArea.filter(area => area.area === node.label)[0].termDefinition;
     } else {
-      this.tooltip = 'Initial term';
+      this.tooltip = this.term.name;
     }
   }
 }
