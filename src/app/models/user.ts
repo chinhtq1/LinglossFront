@@ -1,5 +1,3 @@
-import { Language } from './language';
-
 export interface User {
   id: string;
   name: string;
@@ -7,6 +5,5 @@ export interface User {
   email: string;
   password: string;
   role: string;
-  languages: Language[];
   disciplines: string[];
 }
