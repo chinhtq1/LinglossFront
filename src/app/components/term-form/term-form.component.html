@@ -20,6 +20,7 @@
                 [attr.id]="0"
                 [formControlName]="'definitionControl'"></textarea>
     </nz-form-control>
+    <i nz-icon nzType="minus-circle-o" class="dynamic-delete-button"></i>
   </nz-form-item>
   <nz-form-item *ngFor="let control of listOfControl">
     <nz-form-control nzErrorTip="Please input the value or delete this field.">
@@ -41,6 +42,14 @@
                 [formControlName]="vcontrol.controlInstance">
       </textarea>
       <i nz-icon nzType="minus-circle-o" class="dynamic-delete-button" (click)="removeField(vcontrol, $event)"></i>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control>
+      <button nz-button nzType="dashed" class="add-button">
+        <i nz-icon nzType="plus"></i>
+        Add definition
+      </button>
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>

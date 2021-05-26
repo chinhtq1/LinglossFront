@@ -3,17 +3,10 @@
     <app-header></app-header>
   </nz-header>
   <nz-layout>
-<!--    <nz-sider nzCollapsible [nzCollapsedWidth]="0" [nzCollapsed]="collapsed" nzWidth="250px"-->
-<!--              (nzCollapsedChange)="changeSiderStatus($event)">-->
-<!--      <app-sider (closeSider)="changeSiderStatus($event)"></app-sider>-->
-<!--    </nz-sider>-->
     <nz-layout class="inner-layout">
-<!--      <div *ngIf="!collapsed && mobile; else contentBlock" class="empty-content"></div>-->
-<!--      <ng-template #contentBlock>-->
-        <nz-content>
+      <nz-content>
           <router-outlet></router-outlet>
         </nz-content>
-<!--      </ng-template>-->
     </nz-layout>
   </nz-layout>
 </nz-layout>

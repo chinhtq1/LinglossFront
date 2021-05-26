@@ -1,6 +1,6 @@
 <nz-page-header nzTitle="{{discipline.name}}"></nz-page-header>
 <p nz-typography>{{discipline.description}}</p>
-<button nz-button *ngIf="!isMyDiscipline" (click)="sendApplicationForTheDiscipline(discipline)">Apply</button>
+<button nz-button *ngIf="!isMyDiscipline" (click)="sendApplicationForTheDiscipline(discipline)">Подать заявку</button>
 <button nz-button *ngIf="user && isMyDiscipline" routerLink="/new-term/{{discipline.name}}">Добавить термин</button>
 <div class="card-container" *ngIf="!mobile; else mobileContainer">
 <!--  <app-add-term></app-add-term>-->

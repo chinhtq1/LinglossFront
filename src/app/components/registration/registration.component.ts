@@ -10,11 +10,10 @@ import {LocalStorageService} from '../../services/local-storage.service';
   styleUrls: ['./registration.component.scss']
 })
 export class RegistrationComponent implements OnInit {
-  validateForm!: FormGroup;
+  validateForm: FormGroup;
   user: User = {} as User;
 
   submitForm(): void {
-    // tslint:disable-next-line:forin
     for (const i in this.validateForm.controls) {
       this.validateForm.controls[i].markAsDirty();
       this.validateForm.controls[i].updateValueAndValidity();

@@ -15,14 +15,6 @@ export class AuthorizationComponent {
     this.isVisible = false;
   }
 
-  handleOk(): void {
-    this.isOkLoading = true;
-    setTimeout(() => {
-      this.isVisible = false;
-      this.isOkLoading = false;
-    }, 3000);
-  }
-
   login(): void {
     this.handleCancel();
     window.location.reload();

@@ -2,19 +2,18 @@
 <nz-modal
   [(nzVisible)]="isVisible"
   (nzOnCancel)="handleCancel()"
-  (nzOnOk)="handleOk()"
   [nzOkLoading]="isOkLoading"
   nzWidth="650px"
   nzFooter="null"
 >
   <div *nzModalContent>
     <nz-tabset>
-      <nz-tab nzTitle="Login">
+      <nz-tab nzTitle="Логин">
         <app-login
           (closeModal)="this.login()">
         </app-login>
       </nz-tab>
-      <nz-tab nzTitle="Registration">
+      <nz-tab nzTitle="Регистрация">
         <app-registration></app-registration>
       </nz-tab>
     </nz-tabset>

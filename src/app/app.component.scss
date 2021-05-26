@@ -1,5 +1,6 @@
 nz-layout {
   min-height: 100%;
+  position: relative;
 
   .inner-layout {
     padding: 25px;
@@ -10,6 +11,18 @@ nz-layout {
     padding: 30px;
     min-height: 280px;
     text-align: center;
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
+
+    .fullscreen-bg {
+      display: block;
+      position: absolute;
+      top: 0; left:0;
+      width: 100%;
+      filter: brightness(2) blur(2px) opacity(50%);
+    }
+
   }
 
   .empty-content {
@@ -21,6 +34,10 @@ nz-layout {
   nz-layout {
     nz-content {
       padding: 20px 30px;
+      .fullscreen-bg {
+        height: 100%;
+        width: unset;
+      }
     }
 
     .inner-layout {

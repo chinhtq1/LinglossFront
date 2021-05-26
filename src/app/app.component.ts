@@ -32,4 +32,8 @@ export class AppComponent implements OnInit {
 
   constructor() {
   }
+
+  abortStop(e): void{
+    e.preventDefault();
+  }
 }

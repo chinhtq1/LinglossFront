@@ -53,7 +53,7 @@ export class DisciplineComponent implements OnInit {
         discipline: discipline.id
       } as ApplicationForDiscipline;
       this.applicationForDisciplineService.apply(application).subscribe(() => {
-        this.msg.success('Your application for ' + discipline.name + ' has been sent.');
+        this.msg.success('Ваша заявка была сформирована.');
       }, () => {
         this.msg.error('Error!');
       });
