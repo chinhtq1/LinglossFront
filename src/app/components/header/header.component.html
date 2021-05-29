@@ -1,7 +1,7 @@
 <div class="header">
   <div class="header-left">
     <div class="logo">
-      <h1 routerLink="/start">Линглосс</h1>
+      <h1 routerLink="/start">{{linglossText}}</h1>
     </div>
   </div>
   <div class="header-right">
@@ -10,7 +10,7 @@
         <app-authorization [isVisible]="isModalVisible"></app-authorization>
         <fa-icon [icon]="faUser"></fa-icon>
       </li>
-      <li nz-submenu nzTitle="Основное" nzIcon="book">
+      <li nz-submenu nzTitle="{{mainText}}" nzIcon="book">
         <ul>
           <li nz-menu-item routerLink="disciplines">
             <span class="no-mobile">Дисциплины</span>
@@ -26,11 +26,20 @@
           </li>
         </ul>
       </li>
-      <li nz-menu-item>
-        <span class="no-mobile">Сменить язык</span>
-        <fa-icon [icon]="faGlobe"></fa-icon>
+      <li nz-submenu nzTitle="{{changeLanguageText}}" nzIcon="globe">
+        <ul>
+          <li nz-menu-item (click)="setLanguage('RU')">
+            <span>Русский</span>
+          </li>
+          <li nz-menu-item (click)="setLanguage('BE')">
+            <span>Беларуская</span>
+          </li>
+          <li nz-menu-item  (click)="setLanguage('EN')">
+            <span>English</span>
+          </li>
+        </ul>
       </li>
-      <li nz-submenu nzTitle="О сервисе" nzIcon="laptop">
+      <li nz-submenu nzTitle="{{aboutText}}" nzIcon="laptop">
         <ul>
           <li nz-menu-item routerLink="/about">
             <span class="no-mobile">О сервисе</span>
@@ -45,7 +54,7 @@
         </ul>
       </li>
       <li nz-menu-item *ngIf="user" (click)="logout()">
-        <span class="no-mobile">Выйти</span>
+        <span class="no-mobile">{{logoutText}}</span>
         <fa-icon [icon]="faSignOut"></fa-icon></li>
     </ul>
   </div>

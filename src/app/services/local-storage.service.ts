@@ -7,7 +7,9 @@ import { User } from '../models/user';
 export class LocalStorageService {
 
   private readonly CURRENT_USER: string = 'user';
+  private readonly CURRENT_LANGUAGE: string = 'language';
   private currentUser: User;
+  private currentLanguage: string;
 
   public getUser(): User {
     if (this.currentUser == null || this.currentUser.role == null) {
@@ -25,5 +27,17 @@ export class LocalStorageService {
   public clearUser(): void {
     this.currentUser = null;
     localStorage.setItem(this.CURRENT_USER, null);
+  }
+
+  public getLanguage(): string {
+    if (this.currentLanguage == null) {
+      this.currentLanguage = JSON.parse(localStorage.getItem(this.CURRENT_LANGUAGE));
+    }
+    return this.currentLanguage;
+  }
+
+  public setLanguage(currentLanguage: string): void {
+    this.currentLanguage = currentLanguage;
+    localStorage.setItem(this.CURRENT_LANGUAGE, JSON.stringify(currentLanguage));
   }
 }

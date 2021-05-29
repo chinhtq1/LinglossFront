@@ -23,11 +23,40 @@ export class HeaderComponent implements OnInit {
 
   isModalVisible = false;
 
+  language = 'RU';
+
+  linglossText = '';
+  mainText = '';
+  changeLanguageText = '';
+  aboutText = '';
+  logoutText = '';
+
   constructor(private lss: LocalStorageService) {
   }
 
   ngOnInit(): void {
     this.user = this.lss.getUser();
+    this.language = this.lss.getLanguage() ? this.lss.getLanguage() : this.language;
+    this.lss.setLanguage(this.language);
+    if (this.language === 'RU') {
+      this.linglossText = 'Линглосс';
+      this.mainText = 'Основное';
+      this.changeLanguageText = 'Сменить язык';
+      this.aboutText = 'О сервисе';
+      this.logoutText = 'Выйти';
+    } else if (this.language === 'BE') {
+      this.linglossText = 'Лінглос';
+      this.mainText = 'Асноўнае';
+      this.changeLanguageText = 'Змяніць мову';
+      this.aboutText = 'Пра сэрвіс';
+      this.logoutText = 'Выйсці';
+    } else if (this.language === 'EN') {
+      this.linglossText = 'Lingloss';
+      this.mainText = 'Main';
+      this.changeLanguageText = 'Set language';
+      this.aboutText = 'About';
+      this.logoutText = 'Logout';
+    }
   }
 
   logout(): void {
@@ -38,5 +67,10 @@ export class HeaderComponent implements OnInit {
 
   openModal(): void {
     this.isModalVisible = true;
+  }
+
+  setLanguage(language: string): void {
+    this.lss.setLanguage(language);
+    window.location.reload();
   }
 }
