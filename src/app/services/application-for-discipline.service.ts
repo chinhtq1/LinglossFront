@@ -14,4 +14,12 @@ export class ApplicationForDisciplineService {
   apply(applicationForTheDiscipline: ApplicationForDiscipline): Observable<ApplicationForDiscipline> {
     return this.http.post<ApplicationForDiscipline>(this.applicationForDisciplinesUrl + '/apply', applicationForTheDiscipline);
   }
+
+  getApplicationsByDiscipline(disciplineId: string): Observable<ApplicationForDiscipline[]> {
+    return this.http.get<ApplicationForDiscipline[]>(this.applicationForDisciplinesUrl + '/' + disciplineId);
+  }
+
+  removeApplication(application: ApplicationForDiscipline): Observable<ApplicationForDiscipline> {
+    return this.http.post<ApplicationForDiscipline>(this.applicationForDisciplinesUrl + '/remove', application);
+  }
 }

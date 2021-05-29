@@ -14,7 +14,7 @@
         <span class="no-mobile">Дисциплины</span>
         <fa-icon [icon]="faBook"></fa-icon>
       </li>
-      <li *ngIf="user && user.role === 'TEACHER'" nz-menu-item>
+      <li *ngIf="user && user.role === 'TEACHER'" nz-menu-item routerLink="discipline-applications">
         <span class="no-mobile">Заявки на дисциплины</span>
         <fa-icon [icon]="faPlus"></fa-icon>
       </li>

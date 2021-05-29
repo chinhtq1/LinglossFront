@@ -53,6 +53,9 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {NzToolTipModule} from 'ng-zorro-antd/tooltip';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
 import { TermFormComponent } from './components/term-form/term-form.component';
+import { MyDisciplineApplicationsComponent } from './components/my-discipline-applications/my-discipline-applications.component';
+import { NzTableModule } from 'ng-zorro-antd/table';
+import { NzDividerModule } from 'ng-zorro-antd/divider';
 
 registerLocaleData(ru);
 
@@ -77,7 +80,8 @@ registerLocaleData(ru);
     NotFoundComponent,
     SearchDisciplineComponent,
     AnimatedBackgroundComponent,
-    TermFormComponent
+    TermFormComponent,
+    MyDisciplineApplicationsComponent
   ],
   imports: [
     BrowserModule,
@@ -104,6 +108,7 @@ registerLocaleData(ru);
     NzListModule,
     NzSkeletonModule,
     NzMessageModule,
+    NzTableModule,
     NgxGraphModule,
     FontAwesomeModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
@@ -114,7 +119,8 @@ registerLocaleData(ru);
     }),
     NzToolTipModule,
     NgxChartsModule,
-    NzFormModule
+    NzFormModule,
+    NzDividerModule
   ],
   providers: [
     {provide: NZ_I18N, useValue: ru_RU},
