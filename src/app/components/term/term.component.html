@@ -32,10 +32,10 @@
   </div>
 </nz-modal>
 
-<button nz-button *ngIf="user.role && user.role === 'STUDENT' && isMyDiscipline; else authText" (click)="editTheTerm()">
+<button nz-button *ngIf="user.role && user.role === 'STUDENT' && isMyDiscipline &&!termIsEditable" (click)="editTheTerm()">
   Редактировать термин
 </button>
-<ng-template #authText>
+<ng-template *ngIf="!user || !user.role">
   <p class="warning-text" *ngIf="user.role !== 'TEACHER'">Для редактирования термина необходимо подать заявку на доступ к дисциплине.
     Только авторизованные пользователи могут это сделать.</p>
 </ng-template>

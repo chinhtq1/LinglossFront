@@ -5,8 +5,8 @@ import {ActivatedRoute, PRIMARY_OUTLET, Router, UrlSegment, UrlSegmentGroup, Url
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {NzMessageService} from 'ng-zorro-antd/message';
 import {timer} from 'rxjs';
-import {LocalStorageService} from "../../services/local-storage.service";
-import {User} from "../../models/user";
+import {LocalStorageService} from '../../services/local-storage.service';
+import {User} from '../../models/user';
 
 @Component({
   selector: 'app-term-form',
@@ -16,11 +16,19 @@ import {User} from "../../models/user";
 export class TermFormComponent implements OnInit {
 
   @Input()
-  term: Term = {attributes: []} as Term;
+  term: Term = {
+    definition: [],
+    attributes: [],
+    subjectArea: []} as Term;
 
   validateForm!: FormGroup;
-  listOfControl: Array<{ id: number; controlInstance: string }> = [];
-  listOfValueControl: Array<{ id: number; controlInstance: string }> = [];
+
+  definitionControlList: Array<{ id: number; controlInstance: string }> = [];
+  attributeControlList: Array<{ id: number; controlInstance: string }> = [];
+  attributeValueControlList: Array<{ valueId: number; controlInstance: string }> = [];
+  subjectAreaControlList: Array<{ id: number; controlInstance: string }> = [];
+  subjectAreaValueControlList: Array<{ valueId: number; controlInstance: string }> = [];
+
   user: User;
 
   constructor(private route: ActivatedRoute,
@@ -34,47 +42,82 @@ export class TermFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({});
-    if (!this.term.name) {
-      this.validateForm.addControl('nameControl', new FormControl(null, Validators.required));
+    this.validateForm.addControl('nameControl', new FormControl(this.term.name ? this.term.name : null, Validators.required));
+    if (this.term.definition.length > 0) {
+      this.term.definition.forEach(() => {
+        this.addDefinition();
+      });
+    } else {
+      this.addDefinition();
     }
-    this.validateForm.addControl('definitionControl', new FormControl(this.term.definition, Validators.required));
     if (this.term.attributes.length > 0) {
-      this.term.attributes.forEach(attribute => {
-        this.addField(null, attribute);
+      this.term.attributes.forEach(() => {
+        this.addAttribute();
+      });
+    }
+    if (this.term.subjectArea.length > 0) {
+      this.term.subjectArea.forEach(() => {
+        this.addSubjectArea();
       });
     }
   }
 
-  addField(e?: MouseEvent, attribute?: {attribute: string, value: string}): void {
-    if (e) {
-      e.preventDefault();
-    }
-    const id = this.listOfControl.length > 0 ? this.listOfControl[this.listOfControl.length - 1].id + 1 : 0;
+  addDefinition(): void {
+    const id = this.definitionControlList.length > 0 ?
+      this.definitionControlList[this.definitionControlList.length - 1].id + 1 : 0;
     const control = {
       id,
-      controlInstance: `attribute${id}`
+      controlInstance: `definitionControl${id}`
     };
-    const vcontrol = {
-      id: id * 1000,
-      controlInstance: `attributesValue${id}`
-    };
-    const index = this.listOfControl.push(control);
-    this.listOfValueControl.push(vcontrol);
-    this.validateForm.addControl(this.listOfControl[index - 1].controlInstance,
-      new FormControl(attribute ? attribute.attribute : null, Validators.required));
-    this.validateForm.addControl(this.listOfValueControl[index - 1].controlInstance,
-      new FormControl(attribute ? attribute.value : null, Validators.required));
+    const index = this.definitionControlList.push(control);
+    this.validateForm.addControl(this.definitionControlList[index - 1].controlInstance,
+      new FormControl(this.term.definition.length > 0 ? this.term.definition[index - 1] : null, Validators.required));
   }
 
-  removeField(i: { id: number; controlInstance: string }, e: MouseEvent): void {
-    e.preventDefault();
-    if (this.listOfControl.length > 0) {
-      const index = this.listOfValueControl.indexOf(i);
-      this.listOfValueControl.splice(index, 1);
-      this.listOfControl.splice(index, 1);
-      this.validateForm.removeControl(i.controlInstance);
-      this.validateForm.removeControl(`attribute${i.id / 1000}`);
-    }
+  addAttribute(): void {
+    const id = this.attributeControlList.length > 0 ?
+      this.attributeControlList[this.attributeControlList.length - 1].id + 1 : 100;
+    const control = {
+      id,
+      controlInstance: `attributeControl${id}`
+    };
+
+    const valueId = this.attributeValueControlList.length > 0 ?
+      this.attributeControlList[this.attributeControlList.length - 1].id * 300 + 1 : 300;
+    const valueControl = {
+      valueId,
+      controlInstance: `attributeControl${valueId}`
+    };
+
+    const index = this.attributeControlList.push(control);
+    this.attributeValueControlList.push(valueControl);
+    this.validateForm.addControl(this.attributeControlList[index - 1].controlInstance,
+      new FormControl(this.term.attributes.length > 0 ? this.term.attributes[index - 1].attribute : null, Validators.required));
+    this.validateForm.addControl(this.attributeValueControlList[index - 1].controlInstance,
+      new FormControl(this.term.attributes.length > 0 ? this.term.attributes[index - 1].value : null, Validators.required));
+  }
+
+  addSubjectArea(): void {
+    const id = this.subjectAreaControlList.length > 0 ?
+      this.subjectAreaControlList[this.subjectAreaControlList.length - 1].id * 10000 + 1 : 10000;
+    const control = {
+      id,
+      controlInstance: `subjectAreaControl${id}`
+    };
+
+    const valueId = this.subjectAreaValueControlList.length > 0 ?
+      this.attributeControlList[this.attributeControlList.length - 1].id * 700 + 1 : 700;
+    const valueControl = {
+      valueId,
+      controlInstance: `subjectAreaValueControl${valueId}`
+    };
+
+    const index = this.subjectAreaControlList.push(control);
+    this.subjectAreaValueControlList.push(valueControl);
+    this.validateForm.addControl(this.subjectAreaControlList[index - 1].controlInstance,
+      new FormControl(this.term.subjectArea.length > 0 ? this.term.subjectArea[index - 1].area : null, Validators.required));
+    this.validateForm.addControl(this.subjectAreaValueControlList[index - 1].controlInstance,
+      new FormControl(this.term.subjectArea.length > 0 ? this.term.subjectArea[index - 1].termDefinition : null, Validators.required));
   }
 
   submitForm(): void {
@@ -87,21 +130,37 @@ export class TermFormComponent implements OnInit {
       if (this.validateForm.controls[`nameControl`]) {
         this.term.name = this.validateForm.controls[`nameControl`].value;
       }
-      this.term.definition = this.validateForm.controls[`definitionControl`].value;
       if (!this.term.discipline) {
         const tree: UrlTree = this.router.parseUrl(this.router.url);
         const g: UrlSegmentGroup = tree.root.children[PRIMARY_OUTLET];
         const s: UrlSegment[] = g.segments;
         this.term.discipline = s[1].path;
       }
-      if (this.term.attributes) {
-        this.term.attributes.length = 0;
+      if (this.term.definition.length > 0) {
+        this.term.definition = [];
       }
-      if (this.listOfControl.length > 0) {
-        this.listOfControl.forEach((control, index) => {
+      this.definitionControlList.forEach((control, index) => {
+        this.term.definition.push(this.validateForm.controls[control.controlInstance].value);
+      });
+      if (this.term.attributes.length > 0) {
+        this.term.attributes = [];
+      }
+      if (this.attributeControlList.length > 0) {
+        this.attributeControlList.forEach((control, index) => {
           this.term.attributes.push({
-            attribute: this.validateForm.controls[this.listOfControl[index].controlInstance].value,
-            value: this.validateForm.controls[this.listOfValueControl[index].controlInstance].value
+            attribute: this.validateForm.controls[this.attributeControlList[index].controlInstance].value,
+            value: this.validateForm.controls[this.attributeValueControlList[index].controlInstance].value
+          });
+        });
+      }
+      if (this.term.subjectArea.length > 0) {
+        this.term.subjectArea = [];
+      }
+      if (this.subjectAreaControlList.length > 0) {
+        this.subjectAreaControlList.forEach((control, index) => {
+          this.term.subjectArea.push({
+            area: this.validateForm.controls[this.subjectAreaControlList[index].controlInstance].value,
+            termDefinition: this.validateForm.controls[this.subjectAreaValueControlList[index].controlInstance].value
           });
         });
       }
@@ -126,6 +185,20 @@ export class TermFormComponent implements OnInit {
           this.router.navigate(['start']);
         });
       });
+    }
+  }
+
+  removeField(fieldType: string, index: number): void {
+    if (fieldType === 'definition') {
+      const control = this.definitionControlList.splice(index, 1)[0];
+      this.validateForm.removeControl(control.controlInstance);
+    } else if (fieldType === 'attribute' || fieldType === 'subjectArea') {
+      const control = fieldType === 'attribute' ?
+        this.attributeControlList.splice(index, 1)[0] : this.subjectAreaControlList.splice(index, 1)[0];
+      const vControl = fieldType === 'attribute' ?
+        this.attributeValueControlList.splice(index, 1)[0] : this.subjectAreaValueControlList.splice(index, 1)[0];
+      this.validateForm.removeControl(control.controlInstance);
+      this.validateForm.removeControl(vControl.controlInstance);
     }
   }
 }
