@@ -19,7 +19,8 @@ export class TermFormComponent implements OnInit {
   term: Term = {
     definition: [],
     attributes: [],
-    subjectArea: []} as Term;
+    subjectArea: []
+  } as Term;
 
   validateForm!: FormGroup;
 
@@ -31,6 +32,8 @@ export class TermFormComponent implements OnInit {
 
   user: User;
 
+  applicationMode = false;
+
   constructor(private route: ActivatedRoute,
               private termService: TermService,
               private fb: FormBuilder,
@@ -41,6 +44,19 @@ export class TermFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.term.id = this.route.snapshot.paramMap.get('termId') ? this.route.snapshot.paramMap.get('termId') : null;
+    if (this.term.id) {
+      this.applicationMode = true;
+      this.termService.getTerm(this.term.id).subscribe(term => {
+        this.term = term;
+        this.defineForm();
+      });
+    } else {
+      this.defineForm();
+    }
+  }
+
+  defineForm(): void {
     this.validateForm = this.fb.group({});
     this.validateForm.addControl('nameControl', new FormControl(this.term.name ? this.term.name : null, Validators.required));
     if (this.term.definition.length > 0) {
@@ -180,7 +196,7 @@ export class TermFormComponent implements OnInit {
           this.msg.success('Your term has been published!');
         }
         this.term = {attributes: []} as Term;
-        timer(3500).subscribe(() => {
+        timer(3000).subscribe(() => {
           this.term = {attributes: []} as Term;
           this.router.navigate(['start']);
         });

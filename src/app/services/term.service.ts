@@ -42,4 +42,12 @@ export class TermService {
   getNetwork(termName: string): Observable<Term[]> {
     return this.http.get<Term[]>(this.termsUrl + '/network-for-' + termName);
   }
+
+  getApplicationsByDiscipline(disciplineId: string): Observable<Term[]> {
+    return this.http.get<Term[]>(this.termsUrl + '/applications/' + disciplineId);
+  }
+
+  deleteTerm(term: Term): Observable<any> {
+    return this.http.delete(this.termsUrl + '/delete/' + term.id);
+  }
 }

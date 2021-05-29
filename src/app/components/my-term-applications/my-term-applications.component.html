@@ -1,0 +1,24 @@
+<nz-table [nzData]="dataSet" [nzTitle]="'Заявки на изменение терминов'">
+  <thead>
+  <tr>
+    <th>Термин</th>
+    <th>Дисциплина</th>
+    <th>Студент</th>
+    <th>Действие</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let data of dataSet">
+    <td>{{data.termName}}</td>
+    <td>{{data.disciplineName}}</td>
+    <td>{{data.studentName}}</td>
+    <td>
+      <a (click)="openApplication(data)">Открыть</a>
+      <nz-divider nzType="vertical"></nz-divider>
+      <a (click)="submitApplication(data)">Принять</a>
+      <nz-divider nzType="vertical"></nz-divider>
+      <a (click)="cancelApplication(data)">Отклонить</a>
+    </td>
+  </tr>
+  </tbody>
+</nz-table>

@@ -15,7 +15,7 @@ export class MyDisciplineApplicationsComponent implements OnInit {
 
   user: User = {} as User;
   applications: ApplicationForDiscipline[] = [];
-  dataSet: DataInterface[] = [];
+  dataSet: DataApplicationInterface[] = [];
 
   constructor(private lss: LocalStorageService,
               private applicationForDisciplineService: ApplicationForDisciplineService,
@@ -29,7 +29,7 @@ export class MyDisciplineApplicationsComponent implements OnInit {
         this.applicationForDisciplineService.getApplicationsByDiscipline(discipline).subscribe(applications => {
           applications.forEach(a => {
             this.applications.push(a);
-            const data = {} as DataInterface;
+            const data = {} as DataApplicationInterface;
             this.disciplineService.getDiscipline(a.discipline).subscribe(d => {
               data.disciplineName = d.name;
               data.disciplineId = d.id;
@@ -45,7 +45,7 @@ export class MyDisciplineApplicationsComponent implements OnInit {
     }
   }
 
-  submitApplication(data: DataInterface): void {
+  submitApplication(data: DataApplicationInterface): void {
     this.userService.getUser(data.studentId).subscribe(student => {
       student.disciplines.push(data.disciplineId);
       this.userService.updateUser(student).subscribe(() => {
@@ -54,7 +54,7 @@ export class MyDisciplineApplicationsComponent implements OnInit {
     });
   }
 
-  cancelApplication(data: DataInterface): void {
+  cancelApplication(data: DataApplicationInterface): void {
     const application = this.applications.filter(a => a.discipline === data.disciplineId && a.student === data.studentId)[0];
     this.applicationForDisciplineService.removeApplication(application).subscribe(() => {
       window.location.reload();
@@ -62,7 +62,7 @@ export class MyDisciplineApplicationsComponent implements OnInit {
   }
 }
 
-export class DataInterface {
+export class DataApplicationInterface {
   disciplineId: string;
   disciplineName: string;
   studentId: string;

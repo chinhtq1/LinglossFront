@@ -1,5 +1,6 @@
 <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
-  <nz-form-item *ngIf="!term.name">
+  <h3 *ngIf="!term.name || applicationMode">Название термина</h3>
+  <nz-form-item *ngIf="!term.name || applicationMode">
     <nz-form-label>Название термина</nz-form-label>
     <nz-form-control nzErrorTip="Введите название термина">
       <input

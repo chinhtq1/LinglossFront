@@ -56,6 +56,7 @@ import { TermFormComponent } from './components/term-form/term-form.component';
 import { MyDisciplineApplicationsComponent } from './components/my-discipline-applications/my-discipline-applications.component';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
+import { MyTermApplicationsComponent } from './components/my-term-applications/my-term-applications.component';
 
 registerLocaleData(ru);
 
@@ -81,7 +82,8 @@ registerLocaleData(ru);
     SearchDisciplineComponent,
     AnimatedBackgroundComponent,
     TermFormComponent,
-    MyDisciplineApplicationsComponent
+    MyDisciplineApplicationsComponent,
+    MyTermApplicationsComponent
   ],
   imports: [
     BrowserModule,

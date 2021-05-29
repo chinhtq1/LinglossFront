@@ -9,6 +9,7 @@ import {TermComponent} from './components/term/term.component';
 import {NotFoundComponent} from './components/not-found/not-found.component';
 import {TermFormComponent} from './components/term-form/term-form.component';
 import {MyDisciplineApplicationsComponent} from './components/my-discipline-applications/my-discipline-applications.component';
+import {MyTermApplicationsComponent} from './components/my-term-applications/my-term-applications.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'start', pathMatch: 'full'},
@@ -20,6 +21,8 @@ const routes: Routes = [
   {path: 'about', component: AboutComponent},
   {path: 'new-term/:discipline', component: TermFormComponent},
   {path: 'discipline-applications', component: MyDisciplineApplicationsComponent},
+  {path: 'term-application/:termId', component: TermFormComponent},
+  {path: 'term-applications', component: MyTermApplicationsComponent},
   {path: '404', component: NotFoundComponent},
   {path: '**', redirectTo: '/404'}
 ];
