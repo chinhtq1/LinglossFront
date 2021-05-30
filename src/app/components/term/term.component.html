@@ -1,7 +1,7 @@
 <div class="term-wrapper">
   <div class="term-left">
     <h1>{{term.name}}</h1>
-    <h2>{{term.definition}}</h2>
+    <h2 *ngFor="let definition of term.definition">{{definition}}</h2>
 
     <div class="subject-area" *ngIf="term.subjectArea && term.subjectArea.length>0">
       <app-network class="no-mobile" [term]="term"></app-network>
