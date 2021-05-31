@@ -1,4 +1,5 @@
 import {Component, HostListener, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,7 @@ export class AppComponent implements OnInit {
   title = 'Lingloss';
   collapsed = true;
   mobile = false;
+  showVideo = true;
 
   @HostListener('window:resize', ['$event'])
   onResize(): void {
@@ -16,21 +18,14 @@ export class AppComponent implements OnInit {
     this.collapsed = !this.mobile;
   }
 
-  changeSiderStatus(event): void {
-    this.collapsed = event;
+  constructor(private router: Router) {
+    router.events.subscribe((value) => {
+      this.showVideo = window.location.pathname === '/start';
+    });
   }
 
   ngOnInit(): void {
     this.mobile = window.innerWidth < 980;
-    // setInterval(() => {
-    //   const currentHours = new Date().getHours();
-    //   if (currentHours === 0 || currentHours > 7) {
-    //     termService.getTerms().subscribe();
-    //   }
-    // }, 1620000);
-  }
-
-  constructor() {
   }
 
   abortStop(e): void{

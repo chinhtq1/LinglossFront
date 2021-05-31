@@ -5,8 +5,9 @@
   <nz-layout>
     <nz-layout class="inner-layout">
       <nz-content>
-          <router-outlet></router-outlet>
-        </nz-content>
+        <video *ngIf="showVideo" src="assets/background.mp4" muted autoplay class="fullscreen-bg"></video>
+        <router-outlet></router-outlet>
+      </nz-content>
     </nz-layout>
   </nz-layout>
 </nz-layout>
