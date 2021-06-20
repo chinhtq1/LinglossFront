@@ -1,4 +1,4 @@
-<nz-page-header *ngIf="!mobile" class="site-page-header" nzTitle="Terms of the {{discipline.name}}"></nz-page-header>
+<nz-page-header *ngIf="!mobile" class="site-page-header" nzTitle="{{discipline.name}}"></nz-page-header>
 <nz-list nzItemLayout="horizontal" nzBordered="true" nzSize="default" [nzLoading]="loading" class="main-list">
   <nz-list-item *ngFor="let term of terms" routerLink="{{term.name}}" style="cursor: pointer">
     <nz-list-item-meta style="display: block">

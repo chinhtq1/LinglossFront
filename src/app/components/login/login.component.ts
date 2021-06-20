@@ -11,6 +11,7 @@ import { LocalStorageService } from '../../services/local-storage.service';
 export class LoginComponent implements OnInit {
   validateForm!: FormGroup;
   error = '';
+  passwordVisible = false;
   @Output()
   closeModal: EventEmitter<void> = new EventEmitter();
 
@@ -33,7 +34,7 @@ export class LoginComponent implements OnInit {
         this.lss.setUser(user);
         this.closeModal.emit();
       } else {
-        this.error = 'Wrong credentials. Please, try again.';
+        this.error = 'Аккаунта с такими адресом и паролем не существует. Пожалуйста, попробуйте еще раз';
       }
     });
   }

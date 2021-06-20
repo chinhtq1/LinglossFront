@@ -2,6 +2,7 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+// const mainUrl = 'http://localhost:8080/api';
 const mainUrl = 'https://lingloss.herokuapp.com/api';
 const termsUrl = mainUrl + '/terms';
 const disciplinesUrl = mainUrl + '/disciplines';

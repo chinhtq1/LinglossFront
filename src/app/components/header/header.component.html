@@ -7,26 +7,27 @@
   <div class="header-right">
     <ul class="header-menu" nz-menu nzTheme="dark" nzMode="horizontal">
       <li *ngIf="!user" nz-menu-item (click)="openModal()">
+        <i nz-icon  [nzType]="'user'"></i>
         <app-authorization [isVisible]="isModalVisible"></app-authorization>
-        <fa-icon [icon]="faUser"></fa-icon>
+<!--        <fa-icon [icon]="faUser"></fa-icon>-->
       </li>
       <li nz-submenu nzTitle="{{mainText}}" nzIcon="book">
         <ul>
           <li nz-menu-item routerLink="disciplines">
+<!--            <fa-icon [icon]="faBook"></fa-icon>-->
             <span class="no-mobile">Дисциплины</span>
-            <fa-icon [icon]="faBook"></fa-icon>
           </li>
           <li *ngIf="user && user.role === 'TEACHER'" nz-menu-item routerLink="discipline-applications">
             <span class="no-mobile">Заявки на дисциплины</span>
-            <fa-icon [icon]="faPlus"></fa-icon>
+<!--            <fa-icon [icon]="faPlus"></fa-icon>-->
           </li>
           <li *ngIf="user && user.role === 'TEACHER'" nz-menu-item routerLink="term-applications">
             <span class="no-mobile">Правки терминов</span>
-            <fa-icon [icon]="faPlus"></fa-icon>
+<!--            <fa-icon [icon]="faPlus"></fa-icon>-->
           </li>
         </ul>
       </li>
-      <li nz-submenu nzTitle="{{changeLanguageText}}" nzIcon="globe">
+      <li nz-submenu nzTitle="{{changeLanguageText}}" nzIcon="setting">
         <ul>
           <li nz-menu-item (click)="setLanguage('RU')">
             <span>Русский</span>
@@ -43,19 +44,21 @@
         <ul>
           <li nz-menu-item routerLink="/about">
             <span class="no-mobile">О сервисе</span>
-            <fa-icon [icon]="faInfo"></fa-icon>
+<!--            <fa-icon [icon]="faInfo"></fa-icon>-->
           </li>
           <li nz-menu-item>
             <a href="https://t.me/khasekai" target="_blank">
               <span class="no-mobile">Контакты</span>
-              <fa-icon [icon]="faTelegram"></fa-icon>
+<!--              <fa-icon [icon]="faTelegram"></fa-icon>-->
             </a>
           </li>
         </ul>
       </li>
       <li nz-menu-item *ngIf="user" (click)="logout()">
+        <i nz-icon  [nzType]="'user'"></i>
         <span class="no-mobile">{{logoutText}}</span>
-        <fa-icon [icon]="faSignOut"></fa-icon></li>
+<!--        <fa-icon [icon]="faSignOut"></fa-icon></li>-->
+      </li>
     </ul>
   </div>
 </div>

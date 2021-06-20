@@ -55,10 +55,10 @@ export class DisciplineComponent implements OnInit {
       this.applicationForDisciplineService.apply(application).subscribe(() => {
         this.msg.success('Ваша заявка была сформирована.');
       }, () => {
-        this.msg.error('Error!');
+        this.msg.error('Ошибка!');
       });
     } else {
-      this.msg.error('You need to authorize');
+      this.msg.error('Необходимо авторизоваться');
     }
   }
 

@@ -1,16 +1,23 @@
-<h2>Login</h2>
+<h2>Логин</h2>
 <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
   <nz-form-item>
-    <nz-form-label [nzSm]="6" [nzXs]="24">E-mail</nz-form-label>
-    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input your email!">
-      <input type="email" nz-input formControlName="email" placeholder="Email"/>
-    </nz-form-control>
+    <nz-form-label [nzSm]="6" [nzXs]="24">Email</nz-form-label>
+    <nz-input-group>
+      <nz-form-control nzErrorTip="Пожалуйста, введите email!">
+        <input type="email" nz-input formControlName="email" placeholder="Email" style="padding: 8px 8px 8px 25px;"/>
+      </nz-form-control>
+    </nz-input-group>
   </nz-form-item>
   <nz-form-item>
-    <nz-form-label [nzSm]="6" [nzXs]="24">Password</nz-form-label>
-    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input your password!">
-      <input type="password" nz-input formControlName="password" placeholder="Password"/>
-    </nz-form-control>
+    <nz-form-label [nzSm]="6" [nzXs]="24">Пароль</nz-form-label>
+    <nz-input-group [nzSuffix]="suffixTemplate">
+      <nz-form-control nzErrorTip="Пожалуйста, введите пароль!">
+        <input [type]="passwordVisible ? 'text' : 'password'" nz-input formControlName="password" placeholder="Пароль" nzBorderless>
+      </nz-form-control>
+    </nz-input-group>
+    <ng-template #suffixTemplate>
+      <i nz-icon [nzType]="passwordVisible ? 'eye-invisible' : 'eye'" (click)="passwordVisible = !passwordVisible"></i>
+    </ng-template>
   </nz-form-item>
 </form>
 <div nz-row class="check-container">
@@ -23,7 +30,7 @@
   <!--        <a class="login-form-forgot">Forgot password</a>-->
   <!--      </div>-->
   <button nz-button class="login-form-button" [nzType]="'primary'" [disabled]="validateForm.invalid" (click)="submitForm()">
-    Log in</button>
+    Войти</button>
 </div>
 <div>{{error}}</div>
 

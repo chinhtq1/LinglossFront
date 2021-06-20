@@ -27,14 +27,16 @@ export class SearchDisciplineComponent {
   }
 
   search(value: string): void {
-    this.disciplineService.searchDisciplines(value)
-      .subscribe(data => {
-        this.listOfOption = [];
-        data.forEach(discipline => {
-          this.listOfOption.push(discipline);
+    if (value) {
+      this.disciplineService.searchDisciplines(value)
+        .subscribe(data => {
+          this.listOfOption = [];
+          data.forEach(discipline => {
+            this.listOfOption.push(discipline);
+          });
+        }, () => {
         });
-      }, () => {
-      });
+    }
   }
 
   clear(): void {

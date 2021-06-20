@@ -13,6 +13,7 @@
   </nz-form-item>
   <h3>Значения термина</h3>
   <nz-form-item *ngFor="let definitionControl of definitionControlList; let i = index">
+    <i *ngIf="definitionControlList.length > 1" nz-icon nzType="minus-circle-o" class="dynamic-delete-button" style="margin-right: 3px" (click)="removeField('definition', i)"></i>
     <nz-form-label>Значение термина</nz-form-label>
     <nz-form-control nzErrorTip="Пожалуйста, введите значение термина">
       <textarea nz-input
@@ -20,12 +21,13 @@
                 [nzAutosize]="{ minRows: 3, maxRows: 7 }"
                 [attr.id]="definitionControl.id"
                 [formControlName]="definitionControl.controlInstance"></textarea>
-      <i *ngIf="definitionControlList.length > 1" nz-icon nzType="minus-circle-o" class="dynamic-delete-button" (click)="removeField('definition', i)"></i>
     </nz-form-control>
   </nz-form-item>
   <h3 *ngIf="attributeValueControlList.length > 0">Атрибуты термина</h3>
   <div *ngFor="let attribute of attributeControlList; let i = index">
     <nz-form-item>
+      <i nz-icon nzType="minus-circle-o" class="dynamic-delete-button" (click)="removeField('attribute', i)"
+        style="margin-right: 3px"></i>
       <nz-form-label>Название атрибута</nz-form-label>
       <nz-form-control nzErrorTip="Пожалуйста, введите название атрибута">
         <input nz-input
@@ -42,13 +44,13 @@
                 [nzAutosize]="{ minRows: 3, maxRows: 7 }"
                 [attr.id]="attributeValueControlList[i].valueId"
                 [formControlName]="attributeValueControlList[i].controlInstance"></textarea>
-        <i nz-icon nzType="minus-circle-o" class="dynamic-delete-button" (click)="removeField('attribute', i)"></i>
       </nz-form-control>
     </nz-form-item>
   </div>
   <h3 *ngIf="subjectAreaControlList.length > 0">Предметные области</h3>
   <div *ngFor="let subjectAreaControl of subjectAreaControlList; let i = index">
     <nz-form-item>
+      <i nz-icon nzType="minus-circle-o" class="dynamic-delete-button" (click)="removeField('subjectArea', i)" style="margin-right: 3px"></i>
       <nz-form-label>Предметная область</nz-form-label>
       <nz-form-control nzErrorTip="Пожалуйста, введите название предметной области">
         <input nz-input
@@ -65,7 +67,6 @@
                 [nzAutosize]="{ minRows: 3, maxRows: 7 }"
                 [attr.id]="subjectAreaValueControlList[i].valueId"
                 [formControlName]="subjectAreaValueControlList[i].controlInstance"></textarea>
-        <i nz-icon nzType="minus-circle-o" class="dynamic-delete-button" (click)="removeField('subjectArea', i)"></i>
       </nz-form-control>
     </nz-form-item>
   </div>

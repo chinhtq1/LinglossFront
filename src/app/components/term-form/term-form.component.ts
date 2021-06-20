@@ -24,11 +24,11 @@ export class TermFormComponent implements OnInit {
 
   validateForm!: FormGroup;
 
-  definitionControlList: Array<{ id: number; controlInstance: string }> = [];
-  attributeControlList: Array<{ id: number; controlInstance: string }> = [];
-  attributeValueControlList: Array<{ valueId: number; controlInstance: string }> = [];
-  subjectAreaControlList: Array<{ id: number; controlInstance: string }> = [];
-  subjectAreaValueControlList: Array<{ valueId: number; controlInstance: string }> = [];
+  definitionControlList: Control[] = [];
+  attributeControlList: Control[] = [];
+  attributeValueControlList: ValueControl[] = [];
+  subjectAreaControlList: Control[] = [];
+  subjectAreaValueControlList: ValueControl[] = [];
 
   user: User;
 
@@ -191,9 +191,9 @@ export class TermFormComponent implements OnInit {
       }
       this.termService.sendTerm(this.term).subscribe(() => {
         if (this.user.role === 'STUDENT') {
-          this.msg.success('You application has been sent!');
+          this.msg.success('Ваша заявка была отправлена!');
         } else if (this.user.role === 'TEACHER') {
-          this.msg.success('Your term has been published!');
+          this.msg.success('Термин успешно опубликован!');
         }
         this.term = {attributes: []} as Term;
         timer(3000).subscribe(() => {
@@ -218,3 +218,6 @@ export class TermFormComponent implements OnInit {
     }
   }
 }
+
+export class Control { id: number; controlInstance: string; }
+export class ValueControl { valueId: number; controlInstance: string; }

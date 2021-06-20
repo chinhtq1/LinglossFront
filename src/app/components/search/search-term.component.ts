@@ -44,14 +44,16 @@ export class SearchTermComponent {
   }
 
   search(value: string): void {
-    this.termService.searchTerms(value)
-      .subscribe(data => {
-        this.listOfOption = [];
-        data.forEach(term => {
-          this.listOfOption.push(term);
+    if (value) {
+      this.termService.searchTerms(value)
+        .subscribe(data => {
+          this.listOfOption = [];
+          data.forEach(term => {
+            this.listOfOption.push(term);
+          });
+        }, () => {
         });
-      }, () => {
-      });
+    }
   }
 
   clear(): void {
